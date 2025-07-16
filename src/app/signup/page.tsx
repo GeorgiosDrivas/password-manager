@@ -11,6 +11,9 @@ export default function Signup() {
       </div>
       <form>
         <div>
+          <input type="text" placeholder="Name" required className="w-full" />
+        </div>
+        <div>
           <input
             type="text"
             placeholder="Username"

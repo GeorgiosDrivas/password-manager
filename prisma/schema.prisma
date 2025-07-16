@@ -11,6 +11,7 @@ datasource db {
 model User {
   id    Int     @id @default(autoincrement())
   name  String
+  username  String
   password String  @unique
 }
 
@@ -18,7 +19,7 @@ model Item {
   id          Int      @id @default(autoincrement())
   title       String
   username    String?
-  password    String?
-  url         String?
+  password    String
+  url         String
   userId      Int
 }
