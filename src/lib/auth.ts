@@ -26,7 +26,11 @@ export const authOptions: NextAuthOptions = {
           throw new Error("User not found");
         }
 
-        return { id: String(user.id), username: user.username };
+        return {
+          id: String(user.id),
+          username: user.username,
+          name: user.name,
+        };
       },
     }),
   ],

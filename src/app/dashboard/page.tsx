@@ -9,9 +9,10 @@ export default async function Dashboard() {
     redirect("/");
   }
 
+  console.log(session);
+
   return (
     <div>
-      <h1>Dashboard</h1>
       <p>Welcome, {session.user?.name}</p>
     </div>
   );
