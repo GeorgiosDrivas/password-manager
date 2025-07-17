@@ -20,7 +20,7 @@ export default function Login() {
     });
 
     if (res?.ok) {
-      router.push("/dashboard");
+      router.push("/dashboard/items");
     } else {
       alert("Login failed: " + res?.error || "Unknown error");
     }

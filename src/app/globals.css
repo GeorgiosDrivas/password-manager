@@ -32,3 +32,19 @@ button {
 input:focus {
   outline: none;
 }
+
+#dashboard h2 {
+  font-size: 30px;
+}
+
+#settings-panel h1 {
+  font-size: 20px;
+}
+
+#settings-panel ul li {
+  margin-bottom: 14px;
+}
+
+#new-item-form input {
+  width: 400px;
+}

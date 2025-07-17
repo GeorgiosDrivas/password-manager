@@ -9,17 +9,19 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  name  String
-  username  String
-  password String  @unique
+  id       Int    @id @default(autoincrement())
+  name     String
+  username String
+  password String @unique
+  items    Item[] @relation("UserItems")
 }
 
 model Item {
-  id          Int      @id @default(autoincrement())
-  title       String
-  username    String?
-  password    String
-  url         String
-  userId      Int
+  id       Int     @id @default(autoincrement())
+  title    String
+  username String?
+  password String
+  url      String
+  userId   Int
+  user     User    @relation("UserItems", fields: [userId], references: [id])
 }
