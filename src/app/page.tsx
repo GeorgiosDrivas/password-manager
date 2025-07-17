@@ -1,7 +1,31 @@
+"use client";
+
 import Link from "next/link";
 import AuthLayout from "../components/AuthLayout";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const res = await signIn("credentials", {
+      username,
+      password,
+      redirect: false,
+    });
+
+    if (res?.ok) {
+      router.push("/dashboard");
+    } else {
+      alert("Login failed: " + res?.error || "Unknown error");
+    }
+  };
+
   return (
     <AuthLayout>
       <div>
@@ -9,9 +33,11 @@ export default function Login() {
         <h1 className="font-bold">Password Manager</h1>
         <span>Login to manage your passwords.</span>
       </div>
-      <form>
+      <form onSubmit={handleLogin}>
         <div>
           <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             type="text"
             placeholder="Username"
             required
@@ -20,6 +46,8 @@ export default function Login() {
         </div>
         <div>
           <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
             required
