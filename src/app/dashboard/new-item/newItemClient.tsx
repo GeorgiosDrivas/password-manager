@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function NewItemClient({ userId }: { userId: string }) {
-  const [title, setTitle] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [url, setUrl] = useState("");
+  const [newItemState, setNewItemState] = useState({
+    title: "",
+    username: "",
+    password: "",
+    url: "",
+  });
   const router = useRouter();
 
   const handleNewItem = async (e: React.FormEvent) => {
@@ -16,7 +18,13 @@ export default function NewItemClient({ userId }: { userId: string }) {
     const res = await fetch("/api/new-item", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, username, password, url, userId }),
+      body: JSON.stringify({
+        title: newItemState.title,
+        username: newItemState.username,
+        password: newItemState.password,
+        url: newItemState.url,
+        userId,
+      }),
     });
 
     if (res.ok) {
@@ -35,26 +43,38 @@ export default function NewItemClient({ userId }: { userId: string }) {
         <input
           type="text"
           placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={newItemState.title}
+          onChange={(e) =>
+            setNewItemState({ ...newItemState, title: e.target.value })
+          }
+          required
         />
         <input
           type="text"
           placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={newItemState.username}
+          onChange={(e) =>
+            setNewItemState({ ...newItemState, username: e.target.value })
+          }
+          required
         />
         <input
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={newItemState.password}
+          onChange={(e) =>
+            setNewItemState({ ...newItemState, password: e.target.value })
+          }
+          required
         />
         <input
           type="text"
           placeholder="Url"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          value={newItemState.url}
+          onChange={(e) =>
+            setNewItemState({ ...newItemState, url: e.target.value })
+          }
+          required
         />
         <button type="submit" className="cursor-pointer">
           Add

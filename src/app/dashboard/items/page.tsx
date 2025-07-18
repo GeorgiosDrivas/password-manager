@@ -15,7 +15,6 @@ export default async function Items() {
   const data = await prisma.item.findMany({
     where: { userId },
   });
-  console.log(data);
 
   return (
     <>

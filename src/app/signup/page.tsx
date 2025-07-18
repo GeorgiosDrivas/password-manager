@@ -6,16 +6,22 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Signup() {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [signUpCredentials, setSignUpCredentials] = useState({
+    name: "",
+    username: "",
+    password: "",
+  });
   const router = useRouter();
 
   const handleSignup = async () => {
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, username, password }),
+      body: JSON.stringify({
+        name: signUpCredentials.name,
+        username: signUpCredentials.username,
+        password: signUpCredentials.password,
+      }),
     });
 
     if (res.ok) {
@@ -40,14 +46,24 @@ export default function Signup() {
             placeholder="Name"
             required
             className="w-full"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={signUpCredentials.name}
+            onChange={(e) =>
+              setSignUpCredentials({
+                ...signUpCredentials,
+                name: e.target.value,
+              })
+            }
           />
         </div>
         <div>
           <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={signUpCredentials.username}
+            onChange={(e) =>
+              setSignUpCredentials({
+                ...signUpCredentials,
+                username: e.target.value,
+              })
+            }
             type="text"
             placeholder="Username"
             required
@@ -56,8 +72,13 @@ export default function Signup() {
         </div>
         <div>
           <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={signUpCredentials.password}
+            onChange={(e) =>
+              setSignUpCredentials({
+                ...signUpCredentials,
+                password: e.target.value,
+              })
+            }
             type="password"
             placeholder="Password"
             required

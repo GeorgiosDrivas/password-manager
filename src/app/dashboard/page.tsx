@@ -11,8 +11,6 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
     redirect("/");
   }
 
-  console.log(session);
-
   return (
     <section id="dashboard" className="grid grid-cols-8 h-screen pt-4">
       <div id="settings-panel" className="col-span-2 ps-3">
