@@ -48,3 +48,10 @@ input:focus {
 #new-item-form input {
   width: 400px;
 }
+
+#items-list {
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  max-width: 80%;
+  padding: 20px;
+}
