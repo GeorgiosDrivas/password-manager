@@ -6,7 +6,6 @@
 
 form {
   width: 300px;
-  margin-top: 30px;
 }
 
 input {
@@ -27,6 +26,7 @@ button {
   padding: 10px 50px;
   border-radius: 7px;
   color: #fff;
+  transition: all 0.3s;
 }
 
 input:focus {
@@ -35,10 +35,6 @@ input:focus {
 
 #dashboard h2 {
   font-size: 30px;
-}
-
-#settings-panel h1 {
-  font-size: 20px;
 }
 
 #settings-panel ul li {
@@ -57,15 +53,53 @@ input:focus {
 }
 
 .item-details-btn button {
-  background-color: transparent;
   color: black;
-  padding: 0;
-  margin: 0;
   font-size: 25px;
-  cursor: pointer;
   width: 40px;
   height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+#selected-item {
+  background-color: #fff;
+  width: 500px;
+  top: 0;
+  right: 0;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 40px;
+}
+
+#selected-item-form {
+  width: 100%;
+}
+
+#selected-item-form input {
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  color: #000;
+  top: -2%;
+  left: -5%;
+  background-color: transparent;
+}
+
+.btn-hover:hover {
+  background-color: #915ff3;
+}
+
+#selected-item section {
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+#selected-item section h2 {
+  margin: 0;
 }
