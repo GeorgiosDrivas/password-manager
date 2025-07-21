@@ -6,7 +6,7 @@ export default function SelectedItemDetails({ item }: any) {
   return (
     <>
       <section
-        className="mt-5"
+        className="mt-5 cursor-pointer"
         onClick={() => setOpenAccordion(!openAccordion)}
       >
         <h2 className="mb-4">Details</h2>

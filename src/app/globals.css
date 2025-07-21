@@ -18,6 +18,7 @@ input {
 
 #login-section h1 {
   font-size: 45px;
+  line-height: 50px;
 }
 
 button {
@@ -34,7 +35,7 @@ input:focus {
 }
 
 #dashboard h2 {
-  font-size: 30px;
+  font-size: 27px;
 }
 
 #settings-panel ul li {

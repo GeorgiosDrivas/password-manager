@@ -35,7 +35,7 @@ export default function Login() {
         <h1 className="font-bold">Password Manager</h1>
         <span>Login to manage your passwords.</span>
       </div>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="mt-5">
         <div>
           <input
             value={loginCredentials.username}

@@ -32,14 +32,13 @@ export default function NewItemClient({ userId }: { userId: string }) {
     } else {
       const error = await res.text();
       alert("New item addition failed: " + error);
-      console.log(error);
     }
   };
 
   return (
     <>
       <h2>Add a new Item</h2>
-      <form onSubmit={handleNewItem} id="new-item-form">
+      <form onSubmit={handleNewItem} id="new-item-form" className="mt-4">
         <input
           type="text"
           placeholder="Title"

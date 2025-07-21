@@ -5,7 +5,10 @@ export default function EditSelectedItem({ item }: any) {
 
   return (
     <>
-      <section onClick={() => setOpenAccordion(!openAccordion)}>
+      <section
+        onClick={() => setOpenAccordion(!openAccordion)}
+        className="cursor-pointer"
+      >
         <h2 className="mb-4">Edit</h2>
         <div hidden={!openAccordion}>
           <form id="selected-item-form">
