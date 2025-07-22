@@ -2,7 +2,7 @@
 
 ### Work in progress
 
-A secure and modern password manager web application built with Next.js, React, Prisma, and PostgreSQL.
+A secure and modern password manager web application built with Next.js, NextAuth.js, React, Prisma, and PostgreSQL.
 
 <img width="1360" height="635" alt="first" src="https://github.com/user-attachments/assets/a6c09883-70e9-4791-ac93-4f42be2a0761" />
 <img width="1360" height="638" alt="second" src="https://github.com/user-attachments/assets/834eaf7f-ba94-4832-8b1b-36cec6548c92" />
