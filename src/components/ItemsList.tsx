@@ -28,7 +28,9 @@ export default function ItemsList({ data }: any) {
                 />
                 <div>
                   <p>{item.title}</p>
-                  <p>{item.url}</p>
+                  <a href={item.url} title={item.title} target="_blank">
+                    {item.url}
+                  </a>
                 </div>
               </div>
               <div className="item-details-btn hidden group-hover:block">

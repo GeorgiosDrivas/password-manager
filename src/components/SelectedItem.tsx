@@ -25,7 +25,9 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
           />
           <div className="flex flex-col ms-5">
             <h1 className="text-3xl">{item.title}</h1>
-            <p>{item.url}</p>
+            <a href={item.url} title={item.title} target="_blank">
+              {item.url}
+            </a>
           </div>
         </div>
         <SelectedItemDetails item={item} />
