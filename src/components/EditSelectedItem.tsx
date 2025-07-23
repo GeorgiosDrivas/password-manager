@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { itemSchema } from "../schemas/ItemSchema";
 
 export default function EditSelectedItem({ item }: any) {
   const [openAccordion, setOpenAccordion] = useState(false);
@@ -12,26 +13,35 @@ export default function EditSelectedItem({ item }: any) {
   const router = useRouter();
 
   const handleSubmit = async () => {
+    const schemaResult = itemSchema.safeParse(editedData);
+
+    if (!schemaResult.success) {
+      console.error("Validation error:", schemaResult.error.format());
+      setOpenAccordion(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/edit-item", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          title: editedData.title,
-          username: editedData.username,
-          password: editedData.password,
-          url: editedData.url,
+          ...schemaResult.data,
           itemId: item.id,
         }),
       });
 
-      if (response.ok) {
-        router.push("/dashboard/items");
+      if (!response.ok) {
+        console.error("Server error:", await response.text());
+        return;
       }
-    } catch (e) {
-      console.log(e);
+
+      router.push("/dashboard/items");
+    } catch (error) {
+      console.error("Unexpected error:", error);
+    } finally {
+      setOpenAccordion(false);
     }
-    setOpenAccordion(false);
   };
 
   return (

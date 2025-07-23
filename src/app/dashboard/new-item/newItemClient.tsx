@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { itemSchema } from "@/src/schemas/ItemSchema";
 
 export default function NewItemClient({ userId }: { userId: string }) {
   const [newItemState, setNewItemState] = useState({
@@ -12,26 +13,26 @@ export default function NewItemClient({ userId }: { userId: string }) {
   });
   const router = useRouter();
 
-  const handleNewItem = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleNewItem = async () => {
+    const schemaResult = itemSchema.safeParse(newItemState);
 
-    const res = await fetch("/api/new-item", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title: newItemState.title,
-        username: newItemState.username,
-        password: newItemState.password,
-        url: newItemState.url,
-        userId,
-      }),
-    });
+    if (!schemaResult.success) {
+      console.error(`Invalid item data: ${schemaResult.error.message}`);
+      return;
+    }
 
-    if (res.ok) {
+    try {
+      const res = await fetch("/api/new-item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...newItemState,
+          userId,
+        }),
+      });
       router.push("/dashboard/items");
-    } else {
-      const error = await res.text();
-      alert("New item addition failed: " + error);
+    } catch (error) {
+      console.error("Error adding new item:", error);
     }
   };
 
