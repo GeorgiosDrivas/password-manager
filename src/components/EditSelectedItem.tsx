@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function EditSelectedItem({ item }: any) {
@@ -8,6 +9,30 @@ export default function EditSelectedItem({ item }: any) {
     password: item.password,
     url: item.url,
   });
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("/api/edit-item", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: editedData.title,
+          username: editedData.username,
+          password: editedData.password,
+          url: editedData.url,
+          itemId: item.id,
+        }),
+      });
+
+      if (response.ok) {
+        router.push("/dashboard/items");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    setOpenAccordion(false);
+  };
 
   return (
     <>
@@ -17,7 +42,7 @@ export default function EditSelectedItem({ item }: any) {
       >
         <h2>Edit</h2>
         <div hidden={!openAccordion} className="mt-4">
-          <form id="selected-item-form">
+          <form id="selected-item-form" onSubmit={handleSubmit}>
             <div>
               <input
                 className="w-full"
