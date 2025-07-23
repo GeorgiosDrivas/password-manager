@@ -36,11 +36,13 @@ export default function EditSelectedItem({ item }: any) {
 
   return (
     <>
-      <section
-        onClick={() => setOpenAccordion(!openAccordion)}
-        className="cursor-pointer"
-      >
-        <h2>Edit</h2>
+      <section>
+        <h2
+          className="cursor-pointer"
+          onClick={() => setOpenAccordion(!openAccordion)}
+        >
+          Edit
+        </h2>
         <div hidden={!openAccordion} className="mt-4">
           <form id="selected-item-form" onSubmit={handleSubmit}>
             <div>

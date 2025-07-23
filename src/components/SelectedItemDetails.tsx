@@ -5,11 +5,13 @@ export default function SelectedItemDetails({ item }: any) {
 
   return (
     <>
-      <section
-        className="mt-5 cursor-pointer"
-        onClick={() => setOpenAccordion(!openAccordion)}
-      >
-        <h2 className="mb-4">Details</h2>
+      <section className="mt-5">
+        <h2
+          className="mb-4 cursor-pointer"
+          onClick={() => setOpenAccordion(!openAccordion)}
+        >
+          Details
+        </h2>
         <div hidden={!openAccordion}>
           <ul>
             <li>{item.username}</li>
