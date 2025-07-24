@@ -14,7 +14,8 @@ export default function Login() {
   });
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
     const schemaValidation = loginSchema.safeParse(loginCredentials);
 
     if (!schemaValidation.success) {
