@@ -1,12 +1,13 @@
 "use client";
 
 import AuthLayout from "@/src/components/AuthLayout";
+import { SignupSchema, signupSchema } from "@/src/schemas/signupSchema";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Signup() {
-  const [signUpCredentials, setSignUpCredentials] = useState({
+  const [signUpCredentials, setSignUpCredentials] = useState<SignupSchema>({
     name: "",
     username: "",
     password: "",
@@ -14,21 +15,32 @@ export default function Signup() {
   const router = useRouter();
 
   const handleSignup = async () => {
-    const res = await fetch("/api/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: signUpCredentials.name,
-        username: signUpCredentials.username,
-        password: signUpCredentials.password,
-      }),
-    });
+    const schemaValidation = signupSchema.safeParse(signUpCredentials);
 
-    if (res.ok) {
+    if (!schemaValidation.success) {
+      alert(`Error ${schemaValidation.error.message}`);
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: signUpCredentials.name,
+          username: signUpCredentials.username,
+          password: signUpCredentials.password,
+        }),
+      });
+
+      if (!res.ok) {
+        console.error("Server error:", await res.text());
+        return;
+      }
+
       router.push("/login");
-    } else {
-      const error = await res.text();
-      alert("Signup failed: " + error);
+    } catch (error) {
+      console.error(`Error: ${error}`);
     }
   };
 

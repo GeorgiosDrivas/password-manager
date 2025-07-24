@@ -5,26 +5,38 @@ import AuthLayout from "../components/AuthLayout";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { loginSchema, LoginSchemaType } from "../schemas/userLoginSchema";
 
 export default function Login() {
-  const [loginCredentials, setLoginCredentials] = useState({
+  const [loginCredentials, setLoginCredentials] = useState<LoginSchemaType>({
     username: "",
     password: "",
   });
   const router = useRouter();
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const res = await signIn("credentials", {
-      username: loginCredentials.username,
-      password: loginCredentials.password,
-      redirect: false,
-    });
+  const handleLogin = async () => {
+    const schemaValidation = loginSchema.safeParse(loginCredentials);
 
-    if (res?.ok) {
+    if (!schemaValidation.success) {
+      alert("Error: " + schemaValidation.error.message);
+      return;
+    }
+
+    try {
+      const res = await signIn("credentials", {
+        username: loginCredentials.username,
+        password: loginCredentials.password,
+        redirect: false,
+      });
+
+      if (!res?.ok) {
+        alert("Login failed: " + res?.error || "Unknown error");
+        return;
+      }
+
       router.push("/dashboard/items");
-    } else {
-      alert("Login failed: " + res?.error || "Unknown error");
+    } catch (error) {
+      console.error(`Login error: ${error}`);
     }
   };
 
