@@ -79,7 +79,7 @@ export default function Login() {
             className="w-full"
           />
         </div>
-        <button type="submit" className="cursor-pointer">
+        <button type="submit" className="cursor-pointer btn-hover">
           Login
         </button>
       </form>
