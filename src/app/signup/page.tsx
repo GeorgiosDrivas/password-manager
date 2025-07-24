@@ -46,67 +46,74 @@ export default function Signup() {
 
   return (
     <AuthLayout>
-      <div>
-        <span>Welcome to</span>
-        <h1 className="font-bold">Password Manager</h1>
-        <span>Safely store your passwords with ease.</span>
-      </div>
-      <form onSubmit={handleSignup}>
+      <>
         <div>
-          <input
-            type="text"
-            placeholder="Name"
-            required
-            className="w-full"
-            value={signUpCredentials.name}
-            onChange={(e) =>
-              setSignUpCredentials({
-                ...signUpCredentials,
-                name: e.target.value,
-              })
-            }
-          />
+          <span>Welcome to</span>
+          <h1 className="font-bold">Password Manager</h1>
+          <span>Safely store your passwords with ease.</span>
         </div>
-        <div>
-          <input
-            value={signUpCredentials.username}
-            onChange={(e) =>
-              setSignUpCredentials({
-                ...signUpCredentials,
-                username: e.target.value,
-              })
-            }
-            type="text"
-            placeholder="Username"
-            required
-            className="w-full"
-          />
-        </div>
-        <div>
-          <input
-            value={signUpCredentials.password}
-            onChange={(e) =>
-              setSignUpCredentials({
-                ...signUpCredentials,
-                password: e.target.value,
-              })
-            }
-            type="password"
-            placeholder="Password"
-            required
-            className="w-full"
-          />
-        </div>
-        <button type="submit" className="cursor-pointer">
-          Sign Up
-        </button>
-      </form>
-      <span>
-        Already have an account?{" "}
-        <Link href="/" className="underline">
-          Log in
-        </Link>
-      </span>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSignup();
+          }}
+        >
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              required
+              className="w-full"
+              value={signUpCredentials.name}
+              onChange={(e) =>
+                setSignUpCredentials({
+                  ...signUpCredentials,
+                  name: e.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <input
+              value={signUpCredentials.username}
+              onChange={(e) =>
+                setSignUpCredentials({
+                  ...signUpCredentials,
+                  username: e.target.value,
+                })
+              }
+              type="text"
+              placeholder="Username"
+              required
+              className="w-full"
+            />
+          </div>
+          <div>
+            <input
+              value={signUpCredentials.password}
+              onChange={(e) =>
+                setSignUpCredentials({
+                  ...signUpCredentials,
+                  password: e.target.value,
+                })
+              }
+              type="password"
+              placeholder="Password"
+              required
+              className="w-full"
+            />
+          </div>
+          <button type="submit" className="cursor-pointer">
+            Sign Up
+          </button>
+        </form>
+        <span>
+          Already have an account?{" "}
+          <Link href="/" className="underline">
+            Log in
+          </Link>
+        </span>
+      </>
     </AuthLayout>
   );
 }

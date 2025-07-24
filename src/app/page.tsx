@@ -43,52 +43,54 @@ export default function Login() {
 
   return (
     <AuthLayout>
-      <div>
-        <span>Welcome back to</span>
-        <h1 className="font-bold">Password Manager</h1>
-        <span>Login to manage your passwords.</span>
-      </div>
-      <form onSubmit={handleLogin} className="mt-5">
+      <>
         <div>
-          <input
-            value={loginCredentials.username}
-            onChange={(e) =>
-              setLoginCredentials({
-                ...loginCredentials,
-                username: e.target.value,
-              })
-            }
-            type="text"
-            placeholder="Username"
-            required
-            className="w-full"
-          />
+          <span>Welcome back to</span>
+          <h1 className="font-bold">Password Manager</h1>
+          <span>Login to manage your passwords.</span>
         </div>
-        <div>
-          <input
-            value={loginCredentials.password}
-            onChange={(e) =>
-              setLoginCredentials({
-                ...loginCredentials,
-                password: e.target.value,
-              })
-            }
-            type="password"
-            placeholder="Password"
-            required
-            className="w-full"
-          />
-        </div>
-        <button type="submit" className="cursor-pointer btn-hover">
-          Login
-        </button>
-      </form>
-      <span>
-        Don&apos;t have an account?{" "}
-        <Link href="/signup" className="underline">
-          Sign up for free
-        </Link>
-      </span>
+        <form onSubmit={handleLogin} className="mt-5">
+          <div>
+            <input
+              value={loginCredentials.username}
+              onChange={(e) =>
+                setLoginCredentials({
+                  ...loginCredentials,
+                  username: e.target.value,
+                })
+              }
+              type="text"
+              placeholder="Username"
+              required
+              className="w-full"
+            />
+          </div>
+          <div>
+            <input
+              value={loginCredentials.password}
+              onChange={(e) =>
+                setLoginCredentials({
+                  ...loginCredentials,
+                  password: e.target.value,
+                })
+              }
+              type="password"
+              placeholder="Password"
+              required
+              className="w-full"
+            />
+          </div>
+          <button type="submit" className="cursor-pointer btn-hover">
+            Login
+          </button>
+        </form>
+        <span>
+          Don&apos;t have an account?{" "}
+          <Link href="/signup" className="underline">
+            Sign up for free
+          </Link>
+        </span>
+      </>
     </AuthLayout>
   );
 }
