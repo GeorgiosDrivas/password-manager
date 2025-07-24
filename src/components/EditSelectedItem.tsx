@@ -46,7 +46,7 @@ export default function EditSelectedItem({ item }: any) {
 
   return (
     <>
-      <section>
+      <section id="edit-selected-item">
         <h2
           className="cursor-pointer"
           onClick={() => setOpenAccordion(!openAccordion)}
@@ -100,7 +100,7 @@ export default function EditSelectedItem({ item }: any) {
                 }
               />
             </div>
-            <button className="cursor-pointer btn-hover">Edit</button>
+            <button className="cursor-pointer btn-hover">Edit item</button>
           </form>
         </div>
       </section>

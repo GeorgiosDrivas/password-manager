@@ -94,13 +94,26 @@ input:focus {
   background-color: #915ff3;
 }
 
-#selected-item section {
+#edit-selected-item {
   border: 1px solid #f0f0f0;
   border-radius: 8px;
-  margin-bottom: 20px;
   padding: 10px;
 }
 
 #selected-item section h2 {
   margin: 0;
+}
+
+#delete-item-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#delete-item-btn:hover {
+  background-color: #e60000;
 }

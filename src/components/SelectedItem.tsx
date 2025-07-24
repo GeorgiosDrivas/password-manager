@@ -32,6 +32,7 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
         </div>
         <SelectedItemDetails item={item} />
         <EditSelectedItem item={item} />
+        <button id="delete-item-btn">Delete item</button>
       </section>
     </>
   );
