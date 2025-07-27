@@ -26,6 +26,13 @@
   font-style: normal;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 20px 0;
+  width: 250px;
+}
+
 #login-section {
   padding: 40px 80px;
 }
@@ -67,10 +74,17 @@ input:focus {
 #settings-panel ul li {
   font-size: 17px;
   margin-bottom: 14px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+}
+
+#settings-panel ul li svg {
+  margin-right: 10px;
 }
 
 #settings-panel ul li a:hover {
