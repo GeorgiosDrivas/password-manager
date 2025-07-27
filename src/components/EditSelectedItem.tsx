@@ -1,6 +1,8 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { itemSchema } from "../schemas/ItemSchema";
+import HideSvg from "./svgs/hideSvg";
+import ShowSvg from "./svgs/showSvg";
 
 export default function EditSelectedItem({ item }: any) {
   const [openAccordion, setOpenAccordion] = useState(false);
@@ -11,6 +13,7 @@ export default function EditSelectedItem({ item }: any) {
     url: item.url,
   });
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async () => {
     const schemaResult = itemSchema.safeParse(editedData);
@@ -78,16 +81,22 @@ export default function EditSelectedItem({ item }: any) {
                 }
               />
             </div>
-            <div>
+            <div className="relative">
               <input
                 className="w-full"
-                type="password"
+                type={!showPassword ? "password" : "text"}
                 name="password"
                 value={editedData.password}
                 onChange={(e) =>
                   setEditedData({ ...editedData, password: e.target.value })
                 }
               />
+              <div
+                className="show-password-btn"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <HideSvg /> : <ShowSvg />}
+              </div>
             </div>
             <div>
               <input

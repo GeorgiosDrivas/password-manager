@@ -170,3 +170,12 @@ input:focus {
 #delete-item-btn:hover {
   background-color: #e60000;
 }
+
+.show-password-btn {
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  top: 37%;
+  right: 16px;
+  transform: translateY(-50%);
+}
