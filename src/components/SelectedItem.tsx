@@ -7,6 +7,23 @@ import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import Image from "next/image";
 
 export default function SelectedItem({ item, setSelectedItem }: any) {
+  const handleDelete = async () => {
+    const response = await fetch("/api/delete-item", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ itemId: item.id }),
+    });
+
+    if (response.ok) {
+      setSelectedItem(null);
+    } else {
+      const errorData = await response.json();
+      console.error("Error deleting item:", errorData);
+    }
+  };
+
   return (
     <>
       <section id="selected-item" className="h-full absolute overflow-hidden">
@@ -32,7 +49,9 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
         </div>
         <SelectedItemDetails item={item} />
         <EditSelectedItem item={item} />
-        <button id="delete-item-btn">Delete item</button>
+        <button id="delete-item-btn" onClick={handleDelete}>
+          Delete item
+        </button>
       </section>
     </>
   );
