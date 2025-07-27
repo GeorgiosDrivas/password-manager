@@ -13,7 +13,8 @@ export default function NewItemClient({ userId }: { userId: string }) {
   });
   const router = useRouter();
 
-  const handleNewItem = async () => {
+  const handleNewItem = async (e: any) => {
+    e.preventDefault();
     const schemaResult = itemSchema.safeParse(newItemState);
 
     if (!schemaResult.success) {
