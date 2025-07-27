@@ -48,7 +48,7 @@ export default function EditSelectedItem({ item }: any) {
     <>
       <section id="edit-selected-item">
         <h2
-          className="cursor-pointer"
+          className="cursor-pointer rubik-head-medium"
           onClick={() => setOpenAccordion(!openAccordion)}
         >
           Edit
@@ -100,7 +100,9 @@ export default function EditSelectedItem({ item }: any) {
                 }
               />
             </div>
-            <button className="cursor-pointer btn-hover">Edit item</button>
+            <button className="cursor-pointer btn-hover fira-sans-medium">
+              Edit item
+            </button>
           </form>
         </div>
       </section>

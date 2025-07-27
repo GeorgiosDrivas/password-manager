@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+.rubik-head-medium {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.rubik-head-light {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fira-sans-light {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fira-sans-medium {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 #login-section {
   padding: 40px 80px;
 }
@@ -39,7 +65,20 @@ input:focus {
 }
 
 #settings-panel ul li {
+  font-size: 17px;
   margin-bottom: 14px;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+#settings-panel ul li a:hover {
+  text-decoration: underline;
+}
+
+#settings-panel h1 {
+  font-size: 25px;
 }
 
 #new-item-form input {

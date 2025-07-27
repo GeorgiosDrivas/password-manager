@@ -45,9 +45,11 @@ export default function Login() {
     <AuthLayout>
       <>
         <div>
-          <span>Welcome back to</span>
-          <h1 className="font-bold">Password Manager</h1>
-          <span>Login to manage your passwords.</span>
+          <span className="fira-sans-light">Welcome back to</span>
+          <h1 className="rubik-head-medium">Password Manager</h1>
+          <span className="fira-sans-light">
+            Login to manage your passwords.
+          </span>
         </div>
         <form onSubmit={handleLogin} className="mt-5">
           <div>
@@ -80,13 +82,16 @@ export default function Login() {
               className="w-full"
             />
           </div>
-          <button type="submit" className="cursor-pointer btn-hover">
+          <button
+            type="submit"
+            className="cursor-pointer btn-hover fira-sans-medium"
+          >
             Login
           </button>
         </form>
-        <span>
+        <span className="fira-sans-light">
           Don&apos;t have an account?{" "}
-          <Link href="/signup" className="underline">
+          <Link href="/signup" className="underline fira-sans-medium">
             Sign up for free
           </Link>
         </span>

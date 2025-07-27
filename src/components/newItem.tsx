@@ -39,7 +39,7 @@ export default function NewItem({ userId }: { userId: string }) {
 
   return (
     <>
-      <h2>Add a new Item</h2>
+      <h2 className="rubik-head-light">Add a new item</h2>
       <form onSubmit={handleNewItem} id="new-item-form" className="mt-4">
         <input
           type="text"
@@ -77,7 +77,7 @@ export default function NewItem({ userId }: { userId: string }) {
           }
           required
         />
-        <button type="submit" className="cursor-pointer">
+        <button type="submit" className="cursor-pointer fira-sans-medium">
           Add
         </button>
       </form>

@@ -45,15 +45,24 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
             height={80}
           />
           <div className="flex flex-col ms-5">
-            <h1 className="text-3xl">{item.title}</h1>
-            <a href={item.url} title={item.title} target="_blank">
+            <h1 className="text-3xl rubik-head-medium">{item.title}</h1>
+            <a
+              href={item.url}
+              title={item.title}
+              target="_blank"
+              className="fira-sans-light underline"
+            >
               {item.url}
             </a>
           </div>
         </div>
         <SelectedItemDetails item={item} />
         <EditSelectedItem item={item} />
-        <button id="delete-item-btn" onClick={handleDelete}>
+        <button
+          id="delete-item-btn"
+          className="fira-sans-medium"
+          onClick={handleDelete}
+        >
           Delete item
         </button>
       </section>

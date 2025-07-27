@@ -48,15 +48,18 @@ export default function Signup() {
     <AuthLayout>
       <>
         <div>
-          <span>Welcome to</span>
-          <h1 className="font-bold">Password Manager</h1>
-          <span>Safely store your passwords with ease.</span>
+          <span className="fira-sans-light">Welcome to</span>
+          <h1 className="rubik-head-medium">Password Manager</h1>
+          <span className="fira-sans-light">
+            Safely store your passwords with ease.
+          </span>
         </div>
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSignup();
           }}
+          className="mt-5"
         >
           <div>
             <input
@@ -103,13 +106,16 @@ export default function Signup() {
               className="w-full"
             />
           </div>
-          <button type="submit" className="cursor-pointer">
+          <button
+            type="submit"
+            className="cursor-pointer fira-sans-medium btn-hover"
+          >
             Sign Up
           </button>
         </form>
-        <span>
+        <span className="fira-sans-light">
           Already have an account?{" "}
-          <Link href="/" className="underline">
+          <Link href="/" className="underline fira-sans-medium">
             Log in
           </Link>
         </span>

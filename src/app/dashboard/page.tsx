@@ -14,7 +14,7 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
   return (
     <section id="dashboard" className="grid grid-cols-8 h-screen pt-4">
       <div id="settings-panel" className="col-span-2 ps-3">
-        <h1 className="pb-5 text-xl">{session.user?.name}</h1>
+        <h1 className="pb-5 rubik-head-medium">{session.user?.name}</h1>
         <ul>
           <li>
             <Link href="/dashboard/items">Items</Link>

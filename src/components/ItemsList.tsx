@@ -12,7 +12,7 @@ export default function ItemsList({ data }: any) {
     <>
       {data && data.length > 0 ? (
         <>
-          <h2>Items</h2>
+          <h2 className="rubik-head-light">Items</h2>
           <div id="items-list" className="mt-8">
             {data.map((item: any) => (
               <div
@@ -29,12 +29,12 @@ export default function ItemsList({ data }: any) {
                     className="me-4"
                   />
                   <div>
-                    <p className="text-lg">{item.title}</p>
+                    <p className="text-lg fira-sans-medium">{item.title}</p>
                     <a
                       href={item.url}
                       title={item.title}
                       target="_blank"
-                      className="underline"
+                      className="fira-sans-light underline"
                     >
                       {item.url}
                     </a>
