@@ -5,8 +5,11 @@ import EditSelectedItem from "@/src/components/EditSelectedItem";
 import SelectedItemDetails from "@/src/components/SelectedItemDetails";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function SelectedItem({ item, setSelectedItem }: any) {
+  const router = useRouter();
+
   const handleDelete = async () => {
     const response = await fetch("/api/delete-item", {
       method: "DELETE",
@@ -18,6 +21,7 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
 
     if (response.ok) {
       setSelectedItem(null);
+      router.push("/dashboard/items");
     } else {
       const errorData = await response.json();
       console.error("Error deleting item:", errorData);
