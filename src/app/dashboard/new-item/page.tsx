@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/lib/auth";
 import { redirect } from "next/navigation";
-import NewItemClient from "./newItemClient";
+import NewItem from "../../../components/newItem";
 import Dashboard from "../page";
 
 export default async function NewItemPage() {
@@ -13,7 +13,7 @@ export default async function NewItemPage() {
 
   return (
     <Dashboard>
-      <NewItemClient userId={session.user.id} />;
+      <NewItem userId={session.user.id} />;
     </Dashboard>
   );
 }

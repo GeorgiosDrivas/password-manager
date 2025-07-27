@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { itemSchema } from "@/src/schemas/ItemSchema";
 
-export default function NewItemClient({ userId }: { userId: string }) {
+export default function NewItem({ userId }: { userId: string }) {
   const [newItemState, setNewItemState] = useState({
     title: "",
     username: "",
