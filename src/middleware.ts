@@ -12,7 +12,6 @@ export async function middleware(request: NextRequest) {
     "/api/delete-item",
     "/api/edit-item",
     "/api/items",
-    "/api/auth",
     "/api/signup",
     "/dashboard/settings",
     "/dashboard/items",
