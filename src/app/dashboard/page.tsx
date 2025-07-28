@@ -22,11 +22,11 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
         <ul>
           <li>
             <ListSvg />
-            <Link href="/dashboard/items">Items</Link>
+            <Link href="/dashboard/items">Passwords</Link>
           </li>
           <li>
             <NewItemSvg />
-            <Link href="/dashboard/new-item">New item</Link>
+            <Link href="/dashboard/new-item">New password</Link>
           </li>
         </ul>
         <hr />

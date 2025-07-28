@@ -12,7 +12,7 @@ export default function ItemsList({ data }: any) {
     <>
       {data && data.length > 0 ? (
         <>
-          <h2 className="rubik-head-light">Items</h2>
+          <h2 className="rubik-head-light">Passwords</h2>
           <div id="items-list" className="mt-8">
             {data.map((item: any) => (
               <div

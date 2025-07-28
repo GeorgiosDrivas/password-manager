@@ -39,7 +39,7 @@ export default function NewItem({ userId }: { userId: string }) {
 
   return (
     <>
-      <h2 className="rubik-head-light">Add a new item</h2>
+      <h2 className="rubik-head-light">Add a new password</h2>
       <form onSubmit={handleNewItem} id="new-item-form" className="mt-4">
         <input
           type="text"
