@@ -4,16 +4,17 @@
 
 A secure and modern password manager web application built with Next.js, NextAuth.js, React, Prisma, and PostgreSQL.
 
-<img width="1360" height="635" alt="first" src="https://github.com/user-attachments/assets/a6c09883-70e9-4791-ac93-4f42be2a0761" />
-<img width="1360" height="638" alt="second" src="https://github.com/user-attachments/assets/834eaf7f-ba94-4832-8b1b-36cec6548c92" />
-<img width="1360" height="640" alt="third" src="https://github.com/user-attachments/assets/cf9559c0-a604-4875-a25c-58f3a0f43607" />
-<img width="1356" height="642" alt="fourth" src="https://github.com/user-attachments/assets/a997d305-4fc9-4b3c-a85a-9d64ac88b7c3" />
+<img width="1360" height="642" alt="1" src="https://github.com/user-attachments/assets/1e678e82-bcf3-4697-8687-bb2981ed70bc" />
+<img width="1360" height="643" alt="2" src="https://github.com/user-attachments/assets/35b12cb0-d74e-4143-b92c-fd5107387c20" />
+<img width="1360" height="642" alt="3" src="https://github.com/user-attachments/assets/a1798816-79a6-47d0-8134-f265c2251693" />
+<img width="1360" height="643" alt="4" src="https://github.com/user-attachments/assets/7d635581-97c8-475d-a752-4a7da38a3fe0" />
+<img width="1360" height="642" alt="5" src="https://github.com/user-attachments/assets/1f913883-f001-43ea-b591-a2d31051a5bf" />
 
 ## Tech Stack
 
 - [Next.js](https://nextjs.org/)
 - [React](https://react.dev/)
-- [Prisma](https://www.prisma.io/) ORM
+- [Prisma](https://www.prisma.io/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [NextAuth.js](https://next-auth.js.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
