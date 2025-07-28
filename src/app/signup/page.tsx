@@ -1,6 +1,6 @@
 "use client";
 
-import AuthLayout from "@/src/components/AuthLayout";
+import LoginSignUpLayout from "@/src/components/LoginSignUpLayout";
 import { SignupSchema, signupSchema } from "@/src/schemas/signupSchema";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -45,7 +45,7 @@ export default function Signup() {
   };
 
   return (
-    <AuthLayout>
+    <LoginSignUpLayout>
       <>
         <div>
           <span className="fira-sans-light">Welcome to</span>
@@ -120,6 +120,6 @@ export default function Signup() {
           </Link>
         </span>
       </>
-    </AuthLayout>
+    </LoginSignUpLayout>
   );
 }

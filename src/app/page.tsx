@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import AuthLayout from "../components/AuthLayout";
+import LoginSignUpLayout from "../components/LoginSignUpLayout";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
@@ -42,7 +42,7 @@ export default function Login() {
   };
 
   return (
-    <AuthLayout>
+    <LoginSignUpLayout>
       <>
         <div>
           <span className="fira-sans-light">Welcome back to</span>
@@ -96,6 +96,6 @@ export default function Login() {
           </Link>
         </span>
       </>
-    </AuthLayout>
+    </LoginSignUpLayout>
   );
 }

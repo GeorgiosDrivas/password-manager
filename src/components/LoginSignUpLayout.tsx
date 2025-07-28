@@ -1,7 +1,11 @@
 import { ReactNode } from "react";
 import LandingImage from "./LandingImage";
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+export default function LoginSignUpLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <div className="grid grid-cols-2 h-screen p-5">
       <section
