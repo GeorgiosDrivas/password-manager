@@ -25,7 +25,7 @@ export default function EditSelectedItem({ item }: any) {
     }
 
     try {
-      const response = await fetch("/api/edit-item", {
+      const response = await fetch(`/api/items/${item.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

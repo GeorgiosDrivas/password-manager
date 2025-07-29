@@ -23,7 +23,7 @@ export default function NewItem({ userId }: { userId: string }) {
     }
 
     try {
-      const res = await fetch("/api/new-item", {
+      const res = await fetch("/api/items/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

@@ -11,7 +11,7 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
   const router = useRouter();
 
   const handleDelete = async () => {
-    const response = await fetch("/api/delete-item", {
+    const response = await fetch(`/api/items/${item.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
