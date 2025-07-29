@@ -58,11 +58,7 @@ export default function SelectedItem({ item, setSelectedItem }: any) {
         </div>
         <SelectedItemDetails item={item} />
         <EditSelectedItem item={item} />
-        <button
-          id="delete-item-btn"
-          className="fira-sans-medium"
-          onClick={handleDelete}
-        >
+        <button className="red-btn fira-sans-medium" onClick={handleDelete}>
           Delete item
         </button>
       </section>

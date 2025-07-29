@@ -37,7 +37,7 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
           </li>
           <li>
             <SettingsSvg />
-            Settings
+            <Link href="/dashboard/settings">Settings</Link>
           </li>
         </ul>
       </div>
