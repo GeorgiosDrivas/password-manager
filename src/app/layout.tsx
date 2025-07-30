@@ -3,6 +3,7 @@ import "./globals.css";
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { AuthProvider } from "../components/SessionProvider";
+import { AppProvider } from "../context/appContent";
 
 export const metadata: Metadata = {
   title: "Password Manager",
@@ -31,7 +32,9 @@ export default async function RootLayout({
         ></link>
       </head>
       <body>
-        <AuthProvider session={session}>{children}</AuthProvider>
+        <AuthProvider session={session}>
+          <AppProvider>{children}</AppProvider>
+        </AuthProvider>
       </body>
     </html>
   );

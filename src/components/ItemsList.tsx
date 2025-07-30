@@ -4,9 +4,15 @@ import Image from "next/image";
 import { useState } from "react";
 import SelectedItem from "./SelectedItem";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
+import { useAppContext } from "../context/appContent";
 
 export default function ItemsList({ data }: any) {
   const [selectedItem, setSelectedItem] = useState<any>(null);
+  const { searchQuery } = useAppContext();
+
+  if (searchQuery) {
+    data = data.filter((item: any) => item.title.includes(searchQuery));
+  }
 
   return (
     <>
@@ -17,7 +23,7 @@ export default function ItemsList({ data }: any) {
             {data.map((item: any) => (
               <div
                 key={item.id}
-                className="flex justify-between items-center group cursor-pointer"
+                className="flex justify-between items-center group cursor-pointer mb-5"
                 onClick={() => setSelectedItem(item)}
               >
                 <div className="flex items-center">

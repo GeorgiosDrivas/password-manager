@@ -1,3 +1,4 @@
+import Search from "@/src/components/Search";
 import AboutSvg from "@/src/components/svgs/aboutSvg";
 import ListSvg from "@/src/components/svgs/listSvg";
 import NewItemSvg from "@/src/components/svgs/newItemSvg";
@@ -19,6 +20,7 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
     <section id="dashboard" className="grid grid-cols-8 h-screen pt-4">
       <div id="settings-panel" className="col-span-2 ps-3">
         <h1 className="pb-5 rubik-head-medium">{session.user?.name}</h1>
+        <Search />
         <ul>
           <li>
             <ListSvg />
