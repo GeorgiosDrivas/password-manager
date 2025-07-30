@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import HideSvg from "./svgs/hideSvg";
 import ShowSvg from "./svgs/showSvg";

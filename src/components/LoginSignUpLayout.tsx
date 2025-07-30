@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode, useState } from "react";
 import LandingImage from "./LandingImage";
 import Loading from "./Loading";

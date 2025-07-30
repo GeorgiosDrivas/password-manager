@@ -1,6 +1,6 @@
 "use client";
 
-import CloseSvg from "@/src/components/CloseSvg";
+import CloseSvg from "@/src/components/svgs/CloseSvg";
 import EditSelectedItem from "@/src/components/EditSelectedItem";
 import SelectedItemDetails from "@/src/components/SelectedItemDetails";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
