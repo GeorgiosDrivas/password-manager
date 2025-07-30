@@ -3,7 +3,7 @@
 import Link from "next/link";
 import LoginSignUpLayout from "../components/LoginSignUpLayout";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { loginSchema, LoginSchemaType } from "../schemas/userLoginSchema";
 
@@ -14,11 +14,16 @@ export default function Login() {
   });
   const router = useRouter();
 
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (
+    e: React.FormEvent<HTMLFormElement>,
+    setLoading: (value: boolean) => void
+  ) => {
+    setLoading(true);
     e.preventDefault();
     const schemaValidation = loginSchema.safeParse(loginCredentials);
 
     if (!schemaValidation.success) {
+      setLoading(false);
       alert("Error: " + schemaValidation.error.message);
       return;
     }
@@ -31,71 +36,76 @@ export default function Login() {
       });
 
       if (!res?.ok) {
-        alert("Login failed: " + res?.error || "Unknown error");
+        setLoading(false);
+        alert("Login failed: " + (res?.error || "Unknown error"));
         return;
       }
 
       router.push("/dashboard/items");
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error(`Login error: ${error}`);
     }
   };
 
   return (
     <LoginSignUpLayout>
-      <>
-        <div>
-          <span className="fira-sans-light">Welcome back to</span>
-          <h1 className="rubik-head-medium">Password Manager</h1>
+      {(setLoading) => (
+        <>
+          <div>
+            <span className="fira-sans-light">Welcome back to</span>
+            <h1 className="rubik-head-medium">Password Manager</h1>
+            <span className="fira-sans-light">
+              Login to manage your passwords.
+            </span>
+          </div>
+          <form onSubmit={(e) => handleLogin(e, setLoading)} className="mt-5">
+            <div>
+              <input
+                value={loginCredentials.username}
+                onChange={(e) =>
+                  setLoginCredentials({
+                    ...loginCredentials,
+                    username: e.target.value,
+                  })
+                }
+                type="text"
+                placeholder="Username"
+                required
+                className="w-full"
+              />
+            </div>
+            <div>
+              <input
+                value={loginCredentials.password}
+                onChange={(e) =>
+                  setLoginCredentials({
+                    ...loginCredentials,
+                    password: e.target.value,
+                  })
+                }
+                type="password"
+                placeholder="Password"
+                required
+                className="w-full"
+              />
+            </div>
+            <button
+              type="submit"
+              className="cursor-pointer btn-hover fira-sans-medium"
+            >
+              Login
+            </button>
+          </form>
           <span className="fira-sans-light">
-            Login to manage your passwords.
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="underline fira-sans-medium">
+              Sign up for free
+            </Link>
           </span>
-        </div>
-        <form onSubmit={handleLogin} className="mt-5">
-          <div>
-            <input
-              value={loginCredentials.username}
-              onChange={(e) =>
-                setLoginCredentials({
-                  ...loginCredentials,
-                  username: e.target.value,
-                })
-              }
-              type="text"
-              placeholder="Username"
-              required
-              className="w-full"
-            />
-          </div>
-          <div>
-            <input
-              value={loginCredentials.password}
-              onChange={(e) =>
-                setLoginCredentials({
-                  ...loginCredentials,
-                  password: e.target.value,
-                })
-              }
-              type="password"
-              placeholder="Password"
-              required
-              className="w-full"
-            />
-          </div>
-          <button
-            type="submit"
-            className="cursor-pointer btn-hover fira-sans-medium"
-          >
-            Login
-          </button>
-        </form>
-        <span className="fira-sans-light">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="underline fira-sans-medium">
-            Sign up for free
-          </Link>
-        </span>
-      </>
+        </>
+      )}
     </LoginSignUpLayout>
   );
 }
