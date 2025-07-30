@@ -26,7 +26,7 @@ export default function SelectedItemDetails({ item }: any) {
                   ? item.password
                   : "•".repeat(item.password.length)}
               </span>
-              <div onClick={togglePassword}>
+              <div onClick={togglePassword} className="cursor-pointer">
                 {showPassword ? <HideSvg /> : <ShowSvg />}
               </div>
             </li>

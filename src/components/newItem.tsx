@@ -77,7 +77,10 @@ export default function NewItem({ userId }: { userId: string }) {
           }
           required
         />
-        <button type="submit" className="cursor-pointer fira-sans-medium">
+        <button
+          type="submit"
+          className="cursor-pointer fira-sans-medium btn-hover"
+        >
           Add
         </button>
       </form>
