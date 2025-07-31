@@ -4,8 +4,9 @@ import { useState } from "react";
 import { itemSchema } from "../schemas/ItemSchema";
 import HideSvg from "./svgs/hideSvg";
 import ShowSvg from "./svgs/showSvg";
+import { Password } from "../types/password";
 
-export default function EditSelectedItem({ item }: any) {
+export default function EditSelectedItem({ item }: { item: Password }) {
   const [openAccordion, setOpenAccordion] = useState(false);
   const [editedData, setEditedData] = useState({
     title: item.title,

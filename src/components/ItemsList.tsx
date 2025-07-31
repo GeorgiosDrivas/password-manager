@@ -5,8 +5,9 @@ import { useState } from "react";
 import SelectedItem from "./SelectedItem";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import { useAppContext } from "../context/appContent";
+import { Password } from "../types/password";
 
-export default function ItemsList({ data }: any) {
+export default function ItemsList({ data }: { data: Password[] }) {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const { searchQuery } = useAppContext();
 
@@ -20,7 +21,7 @@ export default function ItemsList({ data }: any) {
         <>
           <h2 className="rubik-head-light">Passwords</h2>
           <div id="items-list" className="mt-8">
-            {data.map((item: any) => (
+            {data.map((item: Password) => (
               <div
                 key={item.id}
                 className="flex justify-between items-center group cursor-pointer mb-5"

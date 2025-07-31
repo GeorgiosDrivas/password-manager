@@ -13,7 +13,7 @@ export default function NewItem({ userId }: { userId: string }) {
   });
   const router = useRouter();
 
-  const handleNewItem = async (e: any) => {
+  const handleNewItem = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const schemaResult = itemSchema.safeParse(newItemState);
 
