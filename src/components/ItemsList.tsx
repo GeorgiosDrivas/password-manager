@@ -8,11 +8,11 @@ import { useAppContext } from "../context/appContent";
 import { Password } from "../types/password";
 
 export default function ItemsList({ data }: { data: Password[] }) {
-  const [selectedItem, setSelectedItem] = useState<any>(null);
+  const [selectedItem, setSelectedItem] = useState<Password | null>(null);
   const { searchQuery } = useAppContext();
 
   if (searchQuery) {
-    data = data.filter((item: any) => item.title.includes(searchQuery));
+    data = data.filter((item: Password) => item.title.includes(searchQuery));
   }
 
   return (
