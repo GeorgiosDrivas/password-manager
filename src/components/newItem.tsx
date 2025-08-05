@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { itemSchema } from "@/src/schemas/ItemSchema";
 import { useForm } from "react-hook-form";
@@ -8,12 +7,6 @@ import { Password } from "../types/password";
 
 export default function NewItem({ userId }: { userId: string }) {
   const router = useRouter();
-  const [newItemState, setNewItemState] = useState({
-    title: "",
-    username: "",
-    password: "",
-    url: "",
-  });
   const {
     register,
     handleSubmit,
