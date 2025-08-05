@@ -5,14 +5,16 @@ import { useState } from "react";
 import SelectedItem from "./SelectedItem";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import { useAppContext } from "../context/appContent";
-import { Password } from "../types/password";
+import { ItemSchemaType } from "../schemas/ItemSchema";
 
-export default function ItemsList({ data }: { data: Password[] }) {
-  const [selectedItem, setSelectedItem] = useState<Password | null>(null);
+export default function ItemsList({ data }: { data: ItemSchemaType[] }) {
+  const [selectedItem, setSelectedItem] = useState<ItemSchemaType | null>(null);
   const { searchQuery } = useAppContext();
 
   if (searchQuery) {
-    data = data.filter((item: Password) => item.title.includes(searchQuery));
+    data = data.filter((item: ItemSchemaType) =>
+      item.title.includes(searchQuery)
+    );
   }
 
   return (
@@ -21,7 +23,7 @@ export default function ItemsList({ data }: { data: Password[] }) {
         <>
           <h2 className="rubik-head-light">Passwords</h2>
           <div id="items-list" className="mt-8">
-            {data.map((item: Password) => (
+            {data.map((item: ItemSchemaType) => (
               <div
                 key={item.id}
                 className="flex justify-between items-center group cursor-pointer mb-5"

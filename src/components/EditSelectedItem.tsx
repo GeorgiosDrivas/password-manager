@@ -1,30 +1,30 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { itemSchema } from "../schemas/ItemSchema";
+import { ItemSchemaType, noIdItemSchema } from "../schemas/ItemSchema";
 import HideSvg from "./svgs/hideSvg";
 import ShowSvg from "./svgs/showSvg";
-import { Password } from "../types/password";
 import { useForm } from "react-hook-form";
 
-export default function EditSelectedItem({ item }: { item: Password }) {
-  const [openAccordion, setOpenAccordion] = useState(false);
-  const [editedData, setEditedData] = useState({
+export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
+  const editedData = {
     title: item.title,
     username: item.username,
     password: item.password,
     url: item.url,
-  });
+  };
+
+  const [openAccordion, setOpenAccordion] = useState(false);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Password>();
+  } = useForm<ItemSchemaType>();
 
-  const handleEditItem = async (data: Password) => {
-    const schemaResult = itemSchema.safeParse(editedData);
+  const handleEditItem = async (data: ItemSchemaType) => {
+    const schemaResult = noIdItemSchema.safeParse(editedData);
 
     if (!schemaResult.success) {
       console.error("Validation error:", schemaResult.error.format());

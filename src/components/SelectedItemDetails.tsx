@@ -2,9 +2,13 @@
 import { useState } from "react";
 import HideSvg from "./svgs/hideSvg";
 import ShowSvg from "./svgs/showSvg";
-import { Password } from "../types/password";
+import { noIdItemSchemaType } from "../schemas/ItemSchema";
 
-export default function SelectedItemDetails({ item }: { item: Password }) {
+export default function SelectedItemDetails({
+  item,
+}: {
+  item: noIdItemSchemaType;
+}) {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => {

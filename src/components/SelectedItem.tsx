@@ -6,14 +6,14 @@ import SelectedItemDetails from "@/src/components/SelectedItemDetails";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Password } from "../types/password";
+import { ItemSchemaType } from "../schemas/ItemSchema";
 
 export default function SelectedItem({
   item,
   setSelectedItem,
 }: {
-  item: Password;
-  setSelectedItem: (item: Password | null) => void;
+  item: ItemSchemaType;
+  setSelectedItem: (item: ItemSchemaType | null) => void;
 }) {
   const router = useRouter();
 

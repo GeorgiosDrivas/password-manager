@@ -1,9 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { itemSchema } from "@/src/schemas/ItemSchema";
+import {
+  itemSchema,
+  noIdItemSchema,
+  noIdItemSchemaType,
+} from "@/src/schemas/ItemSchema";
 import { useForm } from "react-hook-form";
-import { Password } from "../types/password";
 
 export default function NewItem({ userId }: { userId: string }) {
   const router = useRouter();
@@ -11,10 +14,10 @@ export default function NewItem({ userId }: { userId: string }) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Password>();
+  } = useForm<noIdItemSchemaType>();
 
-  const handleNewItem = async (data: Password) => {
-    const schemaResult = itemSchema.safeParse(data);
+  const handleNewItem = async (data: noIdItemSchemaType) => {
+    const schemaResult = noIdItemSchema.safeParse(data);
 
     if (!schemaResult.success) {
       console.error(`Invalid item data: ${schemaResult.error.message}`);
