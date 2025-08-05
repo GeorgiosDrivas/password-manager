@@ -5,6 +5,7 @@ import { itemSchema } from "../schemas/ItemSchema";
 import HideSvg from "./svgs/hideSvg";
 import ShowSvg from "./svgs/showSvg";
 import { Password } from "../types/password";
+import { useForm } from "react-hook-form";
 
 export default function EditSelectedItem({ item }: { item: Password }) {
   const [openAccordion, setOpenAccordion] = useState(false);
@@ -16,8 +17,13 @@ export default function EditSelectedItem({ item }: { item: Password }) {
   });
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Password>();
 
-  const handleSubmit = async () => {
+  const handleEditItem = async (data: Password) => {
     const schemaResult = itemSchema.safeParse(editedData);
 
     if (!schemaResult.success) {
@@ -31,7 +37,7 @@ export default function EditSelectedItem({ item }: { item: Password }) {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...schemaResult.data,
+          ...data,
           itemId: item.id,
         }),
       });
@@ -59,39 +65,18 @@ export default function EditSelectedItem({ item }: { item: Password }) {
           Edit
         </h2>
         <div hidden={!openAccordion} className="mt-4">
-          <form id="selected-item-form" onSubmit={handleSubmit}>
+          <form id="selected-item-form" onSubmit={handleSubmit(handleEditItem)}>
             <div>
-              <input
-                className="w-full"
-                type="text"
-                id="title"
-                name="title"
-                value={editedData.title}
-                onChange={(e) =>
-                  setEditedData({ ...editedData, title: e.target.value })
-                }
-              />
+              <input {...register("title")} className="w-full" />
             </div>
             <div>
-              <input
-                className="w-full"
-                type="text"
-                name="username"
-                value={editedData.username}
-                onChange={(e) =>
-                  setEditedData({ ...editedData, username: e.target.value })
-                }
-              />
+              <input {...register("username")} className="w-full" />
             </div>
             <div className="relative">
               <input
+                {...register("password")}
                 className="w-full"
                 type={!showPassword ? "password" : "text"}
-                name="password"
-                value={editedData.password}
-                onChange={(e) =>
-                  setEditedData({ ...editedData, password: e.target.value })
-                }
               />
               <div
                 className="show-password-btn"
@@ -101,15 +86,7 @@ export default function EditSelectedItem({ item }: { item: Password }) {
               </div>
             </div>
             <div>
-              <input
-                className="w-full"
-                type="text"
-                name="url"
-                value={editedData.url}
-                onChange={(e) =>
-                  setEditedData({ ...editedData, url: e.target.value })
-                }
-              />
+              <input {...register("url")} className="w-full" />
             </div>
             <button className="cursor-pointer btn-hover fira-sans-medium">
               Edit item
