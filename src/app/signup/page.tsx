@@ -1,13 +1,13 @@
 "use client";
 
 import LoginSignUpLayout from "@/src/components/LoginSignUpLayout";
-import { SignupSchema, signupSchema } from "@/src/schemas/signupSchema";
+import { SignupSchemaType, signupSchema } from "@/src/schemas/signupSchema";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Signup() {
-  const [signUpCredentials, setSignUpCredentials] = useState<SignupSchema>({
+  const [signUpCredentials, setSignUpCredentials] = useState<SignupSchemaType>({
     name: "",
     username: "",
     password: "",

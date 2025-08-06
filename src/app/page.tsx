@@ -5,7 +5,7 @@ import LoginSignUpLayout from "../components/LoginSignUpLayout";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
-import { loginSchema, LoginSchemaType } from "../schemas/userLoginSchema";
+import { loginSchema, LoginSchemaType } from "../schemas/loginSchema";
 
 export default function Login() {
   const [loginCredentials, setLoginCredentials] = useState<LoginSchemaType>({
