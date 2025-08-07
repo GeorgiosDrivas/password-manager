@@ -47,10 +47,17 @@ export default function NewItem({ userId }: { userId: string }) {
         id="new-item-form"
         className="mt-4"
       >
-        <input {...register("title", { required: true })} />
-        <input {...register("username", { required: true })} />
-        <input type="password" {...register("password", { required: true })} />
-        <input {...register("url", { required: true })} />
+        <input placeholder="Title" {...register("title", { required: true })} />
+        <input
+          placeholder="Username"
+          {...register("username", { required: true })}
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          {...register("password", { required: true })}
+        />
+        <input placeholder="Url" {...register("url", { required: true })} />
         <button
           type="submit"
           className="cursor-pointer fira-sans-medium btn-hover"
