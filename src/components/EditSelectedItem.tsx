@@ -72,6 +72,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
                 defaultValue={editedData.title}
                 className="w-full"
               />
+              {errors.title && <p>{errors.title.message}</p>}
             </div>
             <div>
               <input
@@ -79,6 +80,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
                 defaultValue={editedData.username}
                 className="w-full"
               />
+              {errors.username && <p>{errors.username.message}</p>}
             </div>
             <div className="relative">
               <input
@@ -87,6 +89,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
                 className="w-full"
                 type={!showPassword ? "password" : "text"}
               />
+              {errors.password && <p>{errors.password.message}</p>}
               <div
                 className="show-password-btn"
                 onClick={() => setShowPassword(!showPassword)}
@@ -100,6 +103,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
                 className="w-full"
                 defaultValue={editedData.url}
               />
+              {errors.url && <p>{errors.url.message}</p>}
             </div>
             <button className="cursor-pointer btn-hover fira-sans-medium">
               Edit item

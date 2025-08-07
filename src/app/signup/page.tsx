@@ -11,7 +11,7 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    formState: errors,
+    formState: { errors },
   } = useForm<SignupSchemaType>();
 
   const handleSignup =
@@ -70,6 +70,7 @@ export default function Signup() {
                 placeholder="Name"
                 className="w-full"
               />
+              {errors.name && <p>{errors.name.message}</p>}
             </div>
             <div>
               <input
@@ -77,6 +78,7 @@ export default function Signup() {
                 placeholder="Username"
                 className="w-full"
               />
+              {errors.username && <p>{errors.username.message}</p>}
             </div>
             <div>
               <input
@@ -85,6 +87,7 @@ export default function Signup() {
                 placeholder="Password"
                 className="w-full"
               />
+              {errors.password && <p>{errors.password.message}</p>}
             </div>
             <button
               type="submit"

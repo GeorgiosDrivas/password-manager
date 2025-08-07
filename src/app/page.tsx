@@ -13,7 +13,7 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: errors,
+    formState: { errors },
   } = useForm<LoginSchemaType>();
 
   const handleLogin =
@@ -67,6 +67,7 @@ export default function Login() {
                 {...register("username", { required: true })}
                 className="w-full"
               />
+              {errors.username && <p>{errors.username.message}</p>}
             </div>
             <div>
               <input
@@ -74,6 +75,7 @@ export default function Login() {
                 {...register("password", { required: true })}
                 className="w-full"
               />
+              {errors.password && <p>{errors.password.message}</p>}
             </div>
             <button
               type="submit"

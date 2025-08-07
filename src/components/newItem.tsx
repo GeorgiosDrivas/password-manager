@@ -1,11 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import {
-  itemSchema,
-  noIdItemSchema,
-  noIdItemSchemaType,
-} from "@/src/schemas/ItemSchema";
+import { noIdItemSchema, noIdItemSchemaType } from "@/src/schemas/ItemSchema";
 import { useForm } from "react-hook-form";
 
 export default function NewItem({ userId }: { userId: string }) {
@@ -25,7 +21,7 @@ export default function NewItem({ userId }: { userId: string }) {
     }
 
     try {
-      const res = await fetch("/api/items/new", {
+      await fetch("/api/items/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,17 +43,32 @@ export default function NewItem({ userId }: { userId: string }) {
         id="new-item-form"
         className="mt-4"
       >
-        <input placeholder="Title" {...register("title", { required: true })} />
-        <input
-          placeholder="Username"
-          {...register("username", { required: true })}
-        />
-        <input
-          placeholder="Password"
-          type="password"
-          {...register("password", { required: true })}
-        />
-        <input placeholder="Url" {...register("url", { required: true })} />
+        <div>
+          <input
+            placeholder="Title"
+            {...register("title", { required: true })}
+          />
+          {errors.title && <p>{errors.title.message}</p>}
+        </div>
+        <div>
+          <input
+            placeholder="Username"
+            {...register("username", { required: true })}
+          />
+          {errors.username && <p>{errors.username.message}</p>}
+        </div>
+        <div>
+          <input
+            placeholder="Password"
+            type="password"
+            {...register("password", { required: true })}
+          />
+          {errors.password && <p>{errors.password.message}</p>}
+        </div>
+        <div>
+          <input placeholder="Url" {...register("url", { required: true })} />
+          {errors.url && <p>{errors.url.message}</p>}
+        </div>
         <button
           type="submit"
           className="cursor-pointer fira-sans-medium btn-hover"
