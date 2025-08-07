@@ -7,6 +7,7 @@ import ShowSvg from "./svgs/showSvg";
 import { useForm } from "react-hook-form";
 
 export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
+  const router = useRouter();
   const editedData = {
     title: item.title,
     username: item.username,
@@ -15,12 +16,11 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
   };
 
   const [openAccordion, setOpenAccordion] = useState(false);
-  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ItemSchemaType>();
 
   const handleEditItem = async (data: ItemSchemaType) => {
@@ -105,8 +105,12 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
               />
               {errors.url && <p>{errors.url.message}</p>}
             </div>
-            <button className="cursor-pointer btn-hover fira-sans-medium">
-              Edit item
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="cursor-pointer btn-hover fira-sans-medium"
+            >
+              {isSubmitting ? "Loading..." : "Edit item"}
             </button>
           </form>
         </div>

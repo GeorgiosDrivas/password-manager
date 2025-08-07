@@ -9,7 +9,7 @@ export default function NewItem({ userId }: { userId: string }) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<noIdItemSchemaType>();
 
   const handleNewItem = async (data: noIdItemSchemaType) => {
@@ -70,10 +70,11 @@ export default function NewItem({ userId }: { userId: string }) {
           {errors.url && <p>{errors.url.message}</p>}
         </div>
         <button
+          disabled={isSubmitting}
           type="submit"
           className="cursor-pointer fira-sans-medium btn-hover"
         >
-          Add
+          {isSubmitting ? "Loading" : "Add"}
         </button>
       </form>
     </>

@@ -13,7 +13,7 @@ export default function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<LoginSchemaType>();
 
   const handleLogin =
@@ -80,8 +80,9 @@ export default function Login() {
             <button
               type="submit"
               className="cursor-pointer btn-hover fira-sans-medium"
+              disabled={isSubmitting}
             >
-              Login
+              {isSubmitting ? "Loading..." : "Login"}
             </button>
           </form>
           <span className="fira-sans-light">

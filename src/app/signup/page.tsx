@@ -11,7 +11,7 @@ export default function Signup() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<SignupSchemaType>();
 
   const handleSignup =
@@ -92,8 +92,9 @@ export default function Signup() {
             <button
               type="submit"
               className="cursor-pointer fira-sans-medium btn-hover"
+              disabled={isSubmitting}
             >
-              Sign Up
+              {isSubmitting ? "Loading" : "Sign Up"}
             </button>
           </form>
           <span className="fira-sans-light">
