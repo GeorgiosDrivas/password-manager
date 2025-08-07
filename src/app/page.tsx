@@ -6,48 +6,51 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { loginSchema, LoginSchemaType } from "../schemas/loginSchema";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
+  const router = useRouter();
   const [loginCredentials, setLoginCredentials] = useState<LoginSchemaType>({
     username: "",
     password: "",
   });
-  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: errors,
+  } = useForm<LoginSchemaType>();
 
-  const handleLogin = async (
-    e: React.FormEvent<HTMLFormElement>,
-    setLoading: (value: boolean) => void
-  ) => {
-    setLoading(true);
-    e.preventDefault();
-    const schemaValidation = loginSchema.safeParse(loginCredentials);
+  const handleLogin =
+    (setLoading: (value: boolean) => void) => async (data: LoginSchemaType) => {
+      setLoading(true);
 
-    if (!schemaValidation.success) {
-      setLoading(false);
-      alert("Error: " + schemaValidation.error.message);
-      return;
-    }
-
-    try {
-      const res = await signIn("credentials", {
-        username: loginCredentials.username,
-        password: loginCredentials.password,
-        redirect: false,
-      });
-
-      if (!res?.ok) {
+      const schemaValidation = loginSchema.safeParse(data);
+      if (!schemaValidation.success) {
         setLoading(false);
-        alert("Login failed: " + (res?.error || "Unknown error"));
+        alert("Error: " + schemaValidation.error.message);
         return;
       }
 
-      router.push("/dashboard/items");
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.error(`Login error: ${error}`);
-    }
-  };
+      try {
+        const res = await signIn("credentials", {
+          username: data.username,
+          password: data.password,
+          redirect: false,
+        });
+
+        if (!res?.ok) {
+          setLoading(false);
+          alert("Login failed: " + (res?.error || "Unknown error"));
+          return;
+        }
+
+        router.push("/dashboard/items");
+      } catch (error) {
+        console.error(`Login error: ${error}`);
+      } finally {
+        setLoading(false);
+      }
+    };
 
   return (
     <LoginSignUpLayout>
@@ -60,34 +63,20 @@ export default function Login() {
               Login to manage your passwords.
             </span>
           </div>
-          <form onSubmit={(e) => handleLogin(e, setLoading)} className="mt-5">
+          <form
+            onSubmit={handleSubmit(handleLogin(setLoading))}
+            className="mt-5"
+          >
             <div>
               <input
-                value={loginCredentials.username}
-                onChange={(e) =>
-                  setLoginCredentials({
-                    ...loginCredentials,
-                    username: e.target.value,
-                  })
-                }
-                type="text"
-                placeholder="Username"
-                required
+                {...register("username", { required: true })}
                 className="w-full"
               />
             </div>
             <div>
               <input
-                value={loginCredentials.password}
-                onChange={(e) =>
-                  setLoginCredentials({
-                    ...loginCredentials,
-                    password: e.target.value,
-                  })
-                }
                 type="password"
-                placeholder="Password"
-                required
+                {...register("password", { required: true })}
                 className="w-full"
               />
             </div>

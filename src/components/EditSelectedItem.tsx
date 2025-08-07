@@ -24,7 +24,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
   } = useForm<ItemSchemaType>();
 
   const handleEditItem = async (data: ItemSchemaType) => {
-    const schemaResult = noIdItemSchema.safeParse(editedData);
+    const schemaResult = noIdItemSchema.safeParse(data);
 
     if (!schemaResult.success) {
       console.error("Validation error:", schemaResult.error.format());
@@ -67,13 +67,22 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
         <div hidden={!openAccordion} className="mt-4">
           <form id="selected-item-form" onSubmit={handleSubmit(handleEditItem)}>
             <div>
-              <input {...register("title")} className="w-full" />
+              <input
+                {...register("title")}
+                defaultValue={editedData.title}
+                className="w-full"
+              />
             </div>
             <div>
-              <input {...register("username")} className="w-full" />
+              <input
+                {...register("username")}
+                defaultValue={editedData.username}
+                className="w-full"
+              />
             </div>
             <div className="relative">
               <input
+                defaultValue={editedData.password}
                 {...register("password")}
                 className="w-full"
                 type={!showPassword ? "password" : "text"}
@@ -86,7 +95,11 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
               </div>
             </div>
             <div>
-              <input {...register("url")} className="w-full" />
+              <input
+                {...register("url")}
+                className="w-full"
+                defaultValue={editedData.url}
+              />
             </div>
             <button className="cursor-pointer btn-hover fira-sans-medium">
               Edit item
