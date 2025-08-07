@@ -3,17 +3,13 @@
 import Link from "next/link";
 import LoginSignUpLayout from "../components/LoginSignUpLayout";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 import { signIn } from "next-auth/react";
 import { loginSchema, LoginSchemaType } from "../schemas/loginSchema";
 import { useForm } from "react-hook-form";
 
 export default function Login() {
   const router = useRouter();
-  const [loginCredentials, setLoginCredentials] = useState<LoginSchemaType>({
-    username: "",
-    password: "",
-  });
   const {
     register,
     handleSubmit,
@@ -33,8 +29,7 @@ export default function Login() {
 
       try {
         const res = await signIn("credentials", {
-          username: data.username,
-          password: data.password,
+          ...data,
           redirect: false,
         });
 

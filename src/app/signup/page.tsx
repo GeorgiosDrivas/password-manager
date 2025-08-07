@@ -4,54 +4,50 @@ import LoginSignUpLayout from "@/src/components/LoginSignUpLayout";
 import { SignupSchemaType, signupSchema } from "@/src/schemas/signupSchema";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function Signup() {
-  const [signUpCredentials, setSignUpCredentials] = useState<SignupSchemaType>({
-    name: "",
-    username: "",
-    password: "",
-  });
   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: errors,
+  } = useForm<SignupSchemaType>();
 
-  const handleSignup = async (
-    e: React.FormEvent<HTMLFormElement>,
-    setLoading: (value: boolean) => void
-  ) => {
-    e.preventDefault();
-    setLoading(true);
-    const schemaValidation = signupSchema.safeParse(signUpCredentials);
+  const handleSignup =
+    (setLoading: (value: boolean) => void) =>
+    async (data: SignupSchemaType) => {
+      setLoading(true);
+      const schemaValidation = signupSchema.safeParse(data);
 
-    if (!schemaValidation.success) {
-      setLoading(false);
-      alert(`Error ${schemaValidation.error.message}`);
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: signUpCredentials.name,
-          username: signUpCredentials.username,
-          password: signUpCredentials.password,
-        }),
-      });
-
-      if (!res.ok) {
+      if (!schemaValidation.success) {
         setLoading(false);
-        console.error("Server error:", await res.text());
+        alert(`Error ${schemaValidation.error.message}`);
         return;
       }
 
-      router.push("/");
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.error(`Error: ${error}`);
-    }
-  };
+      try {
+        const res = await fetch("/api/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...data,
+          }),
+        });
+
+        if (!res.ok) {
+          setLoading(false);
+          console.error("Server error:", await res.text());
+          return;
+        }
+
+        router.push("/");
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.error(`Error: ${error}`);
+      }
+    };
 
   return (
     <LoginSignUpLayout>
@@ -65,53 +61,28 @@ export default function Signup() {
             </span>
           </div>
           <form
-            onSubmit={(e) => {
-              handleSignup(e, setLoading);
-            }}
+            onSubmit={handleSubmit(handleSignup(setLoading))}
             className="mt-5"
           >
             <div>
               <input
-                type="text"
+                {...register("name", { required: true })}
                 placeholder="Name"
-                required
                 className="w-full"
-                value={signUpCredentials.name}
-                onChange={(e) =>
-                  setSignUpCredentials({
-                    ...signUpCredentials,
-                    name: e.target.value,
-                  })
-                }
               />
             </div>
             <div>
               <input
-                value={signUpCredentials.username}
-                onChange={(e) =>
-                  setSignUpCredentials({
-                    ...signUpCredentials,
-                    username: e.target.value,
-                  })
-                }
-                type="text"
+                {...register("name", { required: true })}
                 placeholder="Username"
-                required
                 className="w-full"
               />
             </div>
             <div>
               <input
-                value={signUpCredentials.password}
-                onChange={(e) =>
-                  setSignUpCredentials({
-                    ...signUpCredentials,
-                    password: e.target.value,
-                  })
-                }
+                {...register("password", { required: true })}
                 type="password"
                 placeholder="Password"
-                required
                 className="w-full"
               />
             </div>
