@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { noIdItemSchema, noIdItemSchemaType } from "@/src/schemas/ItemSchema";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function NewItem({ userId }: { userId: string }) {
   const router = useRouter();
@@ -10,16 +11,11 @@ export default function NewItem({ userId }: { userId: string }) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<noIdItemSchemaType>();
+  } = useForm<noIdItemSchemaType>({
+    resolver: zodResolver(noIdItemSchema),
+  });
 
   const handleNewItem = async (data: noIdItemSchemaType) => {
-    const schemaResult = noIdItemSchema.safeParse(data);
-
-    if (!schemaResult.success) {
-      console.error(`Invalid item data: ${schemaResult.error.message}`);
-      return;
-    }
-
     try {
       await fetch("/api/items/new", {
         method: "POST",
@@ -44,29 +40,23 @@ export default function NewItem({ userId }: { userId: string }) {
         className="mt-4"
       >
         <div>
-          <input
-            placeholder="Title"
-            {...register("title", { required: true })}
-          />
+          <input placeholder="Title" {...register("title")} />
           {errors.title && <p>{errors.title.message}</p>}
         </div>
         <div>
-          <input
-            placeholder="Username"
-            {...register("username", { required: true })}
-          />
+          <input placeholder="Username" {...register("username")} />
           {errors.username && <p>{errors.username.message}</p>}
         </div>
         <div>
           <input
             placeholder="Password"
             type="password"
-            {...register("password", { required: true })}
+            {...register("password")}
           />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div>
-          <input placeholder="Url" {...register("url", { required: true })} />
+          <input placeholder="Url" {...register("url")} />
           {errors.url && <p>{errors.url.message}</p>}
         </div>
         <button

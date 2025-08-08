@@ -2,6 +2,7 @@
 
 import LoginSignUpLayout from "@/src/components/LoginSignUpLayout";
 import { SignupSchemaType, signupSchema } from "@/src/schemas/signupSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -12,19 +13,14 @@ export default function Signup() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<SignupSchemaType>();
+  } = useForm<SignupSchemaType>({
+    resolver: zodResolver(signupSchema),
+  });
 
   const handleSignup =
     (setLoading: (value: boolean) => void) =>
     async (data: SignupSchemaType) => {
       setLoading(true);
-      const schemaValidation = signupSchema.safeParse(data);
-
-      if (!schemaValidation.success) {
-        setLoading(false);
-        alert(`Error ${schemaValidation.error.message}`);
-        return;
-      }
 
       try {
         const res = await fetch("/api/signup", {
@@ -66,7 +62,7 @@ export default function Signup() {
           >
             <div>
               <input
-                {...register("name", { required: true })}
+                {...register("name")}
                 placeholder="Name"
                 className="w-full"
               />
@@ -74,7 +70,7 @@ export default function Signup() {
             </div>
             <div>
               <input
-                {...register("name", { required: true })}
+                {...register("name")}
                 placeholder="Username"
                 className="w-full"
               />
@@ -82,7 +78,7 @@ export default function Signup() {
             </div>
             <div>
               <input
-                {...register("password", { required: true })}
+                {...register("password")}
                 type="password"
                 placeholder="Password"
                 className="w-full"
