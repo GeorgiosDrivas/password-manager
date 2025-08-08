@@ -1,10 +1,15 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ItemSchemaType, noIdItemSchema } from "../schemas/ItemSchema";
+import {
+  ItemSchemaType,
+  noIdItemSchema,
+  noIdItemSchemaType,
+} from "../schemas/ItemSchema";
 import HideSvg from "./svgs/hideSvg";
 import ShowSvg from "./svgs/showSvg";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
   const router = useRouter();
@@ -15,7 +20,8 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<ItemSchemaType>({
+  } = useForm<noIdItemSchemaType>({
+    resolver: zodResolver(noIdItemSchema),
     defaultValues: {
       title: item.title,
       username: item.username,
@@ -24,15 +30,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
     },
   });
 
-  const handleEditItem = async (data: ItemSchemaType) => {
-    const schemaResult = noIdItemSchema.safeParse(data);
-
-    if (!schemaResult.success) {
-      console.error("Validation error:", schemaResult.error.format());
-      setOpenAccordion(false);
-      return;
-    }
-
+  const handleEditItem = async (data: noIdItemSchemaType) => {
     try {
       const response = await fetch(`/api/items/${item.id}`, {
         method: "PUT",
