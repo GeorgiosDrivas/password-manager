@@ -8,12 +8,6 @@ import { useForm } from "react-hook-form";
 
 export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
   const router = useRouter();
-  const editedData = {
-    title: item.title,
-    username: item.username,
-    password: item.password,
-    url: item.url,
-  };
 
   const [openAccordion, setOpenAccordion] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -21,7 +15,14 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<ItemSchemaType>();
+  } = useForm<ItemSchemaType>({
+    defaultValues: {
+      title: item.title,
+      username: item.username,
+      password: item.password,
+      url: item.url,
+    },
+  });
 
   const handleEditItem = async (data: ItemSchemaType) => {
     const schemaResult = noIdItemSchema.safeParse(data);
@@ -67,24 +68,15 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
         <div hidden={!openAccordion} className="mt-4">
           <form id="selected-item-form" onSubmit={handleSubmit(handleEditItem)}>
             <div>
-              <input
-                {...register("title")}
-                defaultValue={editedData.title}
-                className="w-full"
-              />
+              <input {...register("title")} className="w-full" />
               {errors.title && <p>{errors.title.message}</p>}
             </div>
             <div>
-              <input
-                {...register("username")}
-                defaultValue={editedData.username}
-                className="w-full"
-              />
+              <input {...register("username")} className="w-full" />
               {errors.username && <p>{errors.username.message}</p>}
             </div>
             <div className="relative">
               <input
-                defaultValue={editedData.password}
                 {...register("password")}
                 className="w-full"
                 type={!showPassword ? "password" : "text"}
@@ -98,11 +90,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
               </div>
             </div>
             <div>
-              <input
-                {...register("url")}
-                className="w-full"
-                defaultValue={editedData.url}
-              />
+              <input {...register("url")} className="w-full" />
               {errors.url && <p>{errors.url.message}</p>}
             </div>
             <button
