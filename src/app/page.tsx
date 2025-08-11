@@ -58,7 +58,11 @@ export default function Login() {
             className="mt-5"
           >
             <div>
-              <input {...register("username")} className="w-full" />
+              <input
+                {...register("username")}
+                className="w-full"
+                placeholder="Username"
+              />
               {errors.username && <p>{errors.username.message}</p>}
             </div>
             <div>
@@ -66,6 +70,7 @@ export default function Login() {
                 type="password"
                 {...register("password")}
                 className="w-full"
+                placeholder="Password"
               />
               {errors.password && <p>{errors.password.message}</p>}
             </div>
