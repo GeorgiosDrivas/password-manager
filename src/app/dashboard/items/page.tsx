@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
-import { authOptions } from "@/src/lib/auth";
-import { getServerSession } from "next-auth/next";
 import { prisma } from "@/src/lib/prisma";
 import ItemsList from "../../../components/ItemsList";
 import Dashboard from "../page";
+import { auth } from "@/auth";
 
 export default async function Items() {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
+
   if (!session) {
     redirect("/");
   }
