@@ -1,16 +1,15 @@
+import { auth } from "@/auth";
 import Search from "@/src/components/Search";
 import AboutSvg from "@/src/components/svgs/aboutSvg";
 import ListSvg from "@/src/components/svgs/listSvg";
 import NewItemSvg from "@/src/components/svgs/newItemSvg";
 import SettingsSvg from "@/src/components/svgs/settingsSvg";
-import { authOptions } from "@/src/lib/auth";
-import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
 export default async function Dashboard({ children }: { children: ReactNode }) {
-  const session = await getServerSession(authOptions);
+  const session = await auth();
 
   if (!session) {
     redirect("/");
