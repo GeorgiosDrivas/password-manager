@@ -70,7 +70,7 @@ export default function Signup() {
             </div>
             <div>
               <input
-                {...register("name")}
+                {...register("username")}
                 placeholder="Username"
                 className="w-full"
               />
