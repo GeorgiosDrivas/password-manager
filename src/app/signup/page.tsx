@@ -1,10 +1,13 @@
 "use client";
 
+import HidePassword from "@/src/components/hidePassword";
 import LoginSignUpLayout from "@/src/components/LoginSignUpLayout";
+import ShowPassword from "@/src/components/showPassword";
 import { SignupSchemaType, signupSchema } from "@/src/schemas/signupSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function Signup() {
@@ -16,6 +19,7 @@ export default function Signup() {
   } = useForm<SignupSchemaType>({
     resolver: zodResolver(signupSchema),
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignup =
     (setLoading: (value: boolean) => void) =>
@@ -76,13 +80,19 @@ export default function Signup() {
               />
               {errors.username && <p>{errors.username.message}</p>}
             </div>
-            <div>
+            <div className="relative">
               <input
                 {...register("password")}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 className="w-full"
               />
+              <div
+                className="show-hide-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <HidePassword /> : <ShowPassword />}
+              </div>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <button

@@ -179,3 +179,11 @@ input:focus {
   right: 16px;
   transform: translateY(-50%);
 }
+
+.show-hide-password {
+  position: absolute;
+  top: 37%;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
