@@ -12,7 +12,7 @@ export default async function NewItemPage() {
 
   return (
     <Dashboard>
-      <NewItem userId={session.user.id} />;
+      <NewItem userId={session.user.id} />
     </Dashboard>
   );
 }
