@@ -26,7 +26,7 @@ export default function Login() {
         const res = await signIn("credentials", {
           ...data,
           redirect: false,
-          callbackUrl: "/dashboard/items", // where to go after login
+          callbackUrl: "/dashboard/items",
         });
 
         if (!res?.ok) {
