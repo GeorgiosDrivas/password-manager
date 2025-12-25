@@ -1,12 +1,9 @@
 import { auth } from "@/auth";
 import Search from "@/src/components/Search";
-import AboutSvg from "@/src/components/svgs/aboutSvg";
-import ListSvg from "@/src/components/svgs/listSvg";
-import NewItemSvg from "@/src/components/svgs/newItemSvg";
-import SettingsSvg from "@/src/components/svgs/settingsSvg";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
+import { Settings, List, CirclePlus } from "lucide-react";
 
 export default async function Dashboard({ children }: { children: ReactNode }) {
   const session = await auth();
@@ -22,22 +19,18 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
         <Search />
         <ul>
           <li>
-            <ListSvg />
+            <List className="w-5 h-5" />
             <Link href="/dashboard/items">Passwords</Link>
           </li>
           <li>
-            <NewItemSvg />
+            <CirclePlus className="w-5 h-5" />
             <Link href="/dashboard/new-item">New password</Link>
           </li>
         </ul>
         <hr />
         <ul>
           <li>
-            <AboutSvg />
-            About
-          </li>
-          <li>
-            <SettingsSvg />
+            <Settings className="w-5 h-5" />
             <Link href="/dashboard/settings">Settings</Link>
           </li>
         </ul>
