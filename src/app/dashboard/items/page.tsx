@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-import { prisma } from "@/src/lib/prisma";
 import ItemsList from "../../../components/ItemsList";
 import Dashboard from "../page";
 import { auth } from "@/auth";
+import { prisma } from "@/src/lib/prisma";
 
 export default async function Items() {
   const session = await auth();
