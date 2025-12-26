@@ -22,7 +22,7 @@ export default function ItemsList({ data }: { data: ItemSchemaType[] }) {
     <>
       {data && data.length > 0 ? (
         <>
-          <h2 className="rubik-head-light">Passwords</h2>
+          <h2 className="rubik-head-light">View your passwords</h2>
           <div id="items-list" className="mt-8">
             {data.map((item: ItemSchemaType) => (
               <div
