@@ -37,7 +37,7 @@ export default function NewItem({ userId }: { userId: string }) {
       <form
         onSubmit={handleSubmit(handleNewItem)}
         id="new-item-form"
-        className="mt-4"
+        className="mt-4 flex flex-col gap-4 justify-center items-center"
       >
         <div>
           <input placeholder="Title" {...register("title")} />

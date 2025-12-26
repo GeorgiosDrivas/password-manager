@@ -37,13 +37,8 @@ hr {
   padding: 40px 80px;
 }
 
-form {
-  width: 300px;
-}
-
 input {
   border: 1px solid #bbbbbb;
-  margin-bottom: 10px;
   height: 35px;
   border-radius: 7px;
   padding: 0 7px;
@@ -55,7 +50,6 @@ input {
 }
 
 button {
-  margin: 15px 0;
   background-color: #7a37fd;
   padding: 10px 50px;
   border-radius: 7px;
