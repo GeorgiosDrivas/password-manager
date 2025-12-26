@@ -6,6 +6,7 @@ import SelectedItem from "./SelectedItem";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import { useAppContext } from "../context/appContent";
 import { ItemSchemaType } from "../schemas/ItemSchema";
+import { Ellipsis } from "lucide-react";
 
 export default function ItemsList({ data }: { data: ItemSchemaType[] }) {
   const [selectedItem, setSelectedItem] = useState<ItemSchemaType | null>(null);
@@ -51,7 +52,7 @@ export default function ItemsList({ data }: { data: ItemSchemaType[] }) {
                 </div>
                 <div className="item-details-btn hidden group-hover:block">
                   <button className="cursor-pointer flex justify-center items-center">
-                    ...
+                    <Ellipsis />
                   </button>
                 </div>
               </div>

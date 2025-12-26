@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
-import HideSvg from "./svgs/hideSvg";
-import ShowSvg from "./svgs/showSvg";
 import { noIdItemSchemaType } from "../schemas/ItemSchema";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function SelectedItemDetails({
   item,
@@ -32,7 +31,7 @@ export default function SelectedItemDetails({
                   : "•".repeat(item.password.length)}
               </span>
               <div onClick={togglePassword} className="cursor-pointer">
-                {showPassword ? <HideSvg /> : <ShowSvg />}
+                {showPassword ? <EyeOff /> : <Eye />}
               </div>
             </li>
           </ul>

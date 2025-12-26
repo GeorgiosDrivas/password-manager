@@ -6,10 +6,9 @@ import {
   noIdItemSchema,
   noIdItemSchemaType,
 } from "../schemas/ItemSchema";
-import HideSvg from "./svgs/hideSvg";
-import ShowSvg from "./svgs/showSvg";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
   const router = useRouter();
@@ -84,7 +83,7 @@ export default function EditSelectedItem({ item }: { item: ItemSchemaType }) {
                 className="show-password-btn"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <HideSvg /> : <ShowSvg />}
+                {showPassword ? <EyeOff /> : <Eye />}
               </div>
             </div>
             <div>

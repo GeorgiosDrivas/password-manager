@@ -1,12 +1,12 @@
 "use client";
 
-import CloseSvg from "@/src/components/svgs/CloseSvg";
 import EditSelectedItem from "@/src/components/EditSelectedItem";
 import SelectedItemDetails from "@/src/components/SelectedItemDetails";
 import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ItemSchemaType } from "../schemas/ItemSchema";
+import { CircleX } from "lucide-react";
 
 export default function SelectedItem({
   item,
@@ -42,7 +42,7 @@ export default function SelectedItem({
           className="close-btn cursor-pointer bg-transparent absolute text-3xl border-none"
           onClick={() => setSelectedItem(null)}
         >
-          <CloseSvg />
+          <CircleX />
         </button>
         <div className="flex items-center justify-start mt-5">
           <Image
