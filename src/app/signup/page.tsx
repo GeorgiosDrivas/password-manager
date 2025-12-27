@@ -68,7 +68,7 @@ export default function Signup() {
               <input
                 {...register("name")}
                 placeholder="Name"
-                className="w-full"
+                className="w-full mb-2"
               />
               {errors.name && <p>{errors.name.message}</p>}
             </div>
@@ -76,7 +76,7 @@ export default function Signup() {
               <input
                 {...register("username")}
                 placeholder="Username"
-                className="w-full"
+                className="w-full mb-2"
               />
               {errors.username && <p>{errors.username.message}</p>}
             </div>
@@ -85,7 +85,7 @@ export default function Signup() {
                 {...register("password")}
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full"
+                className="w-full mb-2"
               />
               <div
                 className="show-hide-password"

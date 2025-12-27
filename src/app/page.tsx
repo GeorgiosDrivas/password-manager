@@ -61,7 +61,7 @@ export default function Login() {
             <div>
               <input
                 {...register("username")}
-                className="w-full"
+                className="w-full mb-2"
                 placeholder="Username"
               />
               {errors.username && <p>{errors.username.message}</p>}
@@ -70,7 +70,7 @@ export default function Login() {
               <input
                 type="password"
                 {...register("password")}
-                className="w-full"
+                className="w-full mb-2"
                 placeholder="Password"
               />
               {errors.password && <p>{errors.password.message}</p>}
