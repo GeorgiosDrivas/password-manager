@@ -12,7 +12,7 @@ export default function LoginSignUpLayout({
 
   return (
     <>
-      {loading ? <Loading /> : null}
+      {loading && <Loading />}
       <div className="grid grid-cols-2 h-screen p-5">
         <section
           id="login-section"

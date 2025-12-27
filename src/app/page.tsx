@@ -26,8 +26,8 @@ export default function Login() {
 
   const handleLogin =
     (setLoading: (value: boolean) => void) => async (data: LoginSchemaType) => {
-      setLoading(true);
       try {
+        setLoading(true);
         const res = await signIn("credentials", {
           ...data,
           redirect: false,
@@ -43,8 +43,6 @@ export default function Login() {
         router.push("/dashboard/items");
       } catch (error) {
         console.error(`Login error: ${error}`);
-      } finally {
-        setLoading(false);
       }
     };
 
