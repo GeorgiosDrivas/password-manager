@@ -8,8 +8,13 @@ import { signIn } from "next-auth/react";
 import { loginSchema, LoginSchemaType } from "../schemas/loginSchema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import HidePassword from "@/src/components/hidePassword";
+import ShowPassword from "@/src/components/showPassword";
 
 export default function Login() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const router = useRouter();
   const {
     register,
@@ -66,13 +71,19 @@ export default function Login() {
               />
               {errors.username && <p>{errors.username.message}</p>}
             </div>
-            <div>
+            <div className="relative">
               <input
-                type="password"
                 {...register("password")}
-                className="w-full mb-2"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
+                className="w-full mb-2"
               />
+              <div
+                className="show-hide-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <HidePassword /> : <ShowPassword />}
+              </div>
               {errors.password && <p>{errors.password.message}</p>}
             </div>
             <button
