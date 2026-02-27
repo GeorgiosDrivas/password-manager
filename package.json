@@ -25,10 +25,10 @@
     "zod": "^4.0.5",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@types/bcrypt": "^6.0.0"
   },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4"
