@@ -80,7 +80,6 @@ export default function Signup() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4">
-      {/* Background glow */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
@@ -93,7 +92,6 @@ export default function Signup() {
         className="w-full max-w-md relative z-10"
       >
         <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-slate-200/50 dark:shadow-black/50 border border-white/20 dark:border-slate-800/50 overflow-hidden">
-          {/* Header */}
           <div className="px-8 pt-10 pb-6 text-center">
             <motion.div
               initial={{ scale: 0 }}
@@ -113,7 +111,6 @@ export default function Signup() {
           </div>
 
           <div className="px-8 pb-8">
-            {/* Error Alert */}
             <AnimatePresence>
               {errors.root && (
                 <motion.div
@@ -143,7 +140,6 @@ export default function Signup() {
                 className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all"
               />
 
-              {/* Password */}
               <div className="relative">
                 <input
                   {...register("password")}
@@ -164,7 +160,6 @@ export default function Signup() {
                 </button>
               </div>
 
-              {/* Strength */}
               {watchedPassword && (
                 <div>
                   <div className="flex justify-between text-xs mb-1">
@@ -210,7 +205,6 @@ export default function Signup() {
                 </div>
               )}
 
-              {/* Submit */}
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
@@ -230,7 +224,6 @@ export default function Signup() {
             </form>
           </div>
 
-          {/* Footer */}
           <div className="px-8 py-6 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
             <p className="text-center text-sm text-slate-600 dark:text-slate-400">
               Already have an account?{" "}

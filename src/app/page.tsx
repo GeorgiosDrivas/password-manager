@@ -19,7 +19,6 @@ import {
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
   const router = useRouter();
 
   const {
@@ -61,7 +60,6 @@ export default function Login() {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4">
-      {/* Background decorative elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl" />
@@ -73,9 +71,7 @@ export default function Login() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md relative z-10"
       >
-        {/* Main Card */}
         <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-slate-200/50 dark:shadow-black/50 border border-white/20 dark:border-slate-800/50 overflow-hidden">
-          {/* Header Section */}
           <div className="px-8 pt-10 pb-6 text-center">
             <motion.div
               initial={{ scale: 0 }}
@@ -99,9 +95,7 @@ export default function Login() {
             </p>
           </div>
 
-          {/* Form Section */}
           <div className="px-8 pb-8">
-            {/* Error Alert */}
             <AnimatePresence mode="wait">
               {errors.root && (
                 <motion.div
@@ -122,7 +116,6 @@ export default function Login() {
               onSubmit={handleSubmit(handleLogin(() => {}))}
               className="space-y-5"
             >
-              {/* Username Field */}
               <div className="space-y-1.5">
                 <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
                   Username
@@ -130,8 +123,6 @@ export default function Login() {
                 <div className="relative group">
                   <input
                     {...register("username")}
-                    onFocus={() => setFocusedField("username")}
-                    onBlur={() => setFocusedField(null)}
                     className="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl outline-none transition-all duration-200 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 focus:shadow-lg focus:shadow-emerald-500/10 placeholder:text-slate-400 text-slate-800 dark:text-slate-200 font-medium"
                     placeholder="Enter your username"
                   />
@@ -151,7 +142,6 @@ export default function Login() {
                 </div>
               </div>
 
-              {/* Password Field */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between ml-1">
                   <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300">
@@ -162,8 +152,6 @@ export default function Login() {
                   <input
                     {...register("password")}
                     type={showPassword ? "text" : "password"}
-                    onFocus={() => setFocusedField("password")}
-                    onBlur={() => setFocusedField(null)}
                     className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl outline-none transition-all duration-200 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 focus:shadow-lg focus:shadow-emerald-500/10 placeholder:text-slate-400 text-slate-800 dark:text-slate-200 font-medium"
                     placeholder="Enter your password"
                   />
@@ -200,7 +188,6 @@ export default function Login() {
                 </div>
               </div>
 
-              {/* Submit Button */}
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
@@ -226,7 +213,6 @@ export default function Login() {
             </form>
           </div>
 
-          {/* Footer */}
           <div className="px-8 py-6 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
             <p className="text-center text-sm text-slate-600 dark:text-slate-400">
               Don&apos;t have an account?{" "}
