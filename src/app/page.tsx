@@ -9,8 +9,8 @@ import { loginSchema, LoginSchemaType } from "../schemas/loginSchema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import HidePassword from "@/src/components/hidePassword";
-import ShowPassword from "@/src/components/showPassword";
+import HidePassword from "@/components/hidePassword";
+import ShowPassword from "@/components/showPassword";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);

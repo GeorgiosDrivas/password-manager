@@ -1,9 +1,9 @@
-import { auth } from "@/auth";
-import Search from "@/src/components/Search";
+import Search from "@/components/Search";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { Settings, List, CirclePlus } from "lucide-react";
+import { auth } from "../../../auth";
 
 export default async function Dashboard({ children }: { children: ReactNode }) {
   const session = await auth();

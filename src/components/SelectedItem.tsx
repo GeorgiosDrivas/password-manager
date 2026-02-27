@@ -1,8 +1,8 @@
 "use client";
 
-import EditSelectedItem from "@/src/components/EditSelectedItem";
-import SelectedItemDetails from "@/src/components/SelectedItemDetails";
-import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
+import EditSelectedItem from "@/components/EditSelectedItem";
+import SelectedItemDetails from "@/components/SelectedItemDetails";
+import { getUrlFavicon } from "@/utils/getFaviconUrl";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ItemSchemaType } from "../schemas/ItemSchema";

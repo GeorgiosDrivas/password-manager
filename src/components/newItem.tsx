@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { noIdItemSchema, noIdItemSchemaType } from "@/src/schemas/ItemSchema";
+import { noIdItemSchema, noIdItemSchemaType } from "@/schemas/ItemSchema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

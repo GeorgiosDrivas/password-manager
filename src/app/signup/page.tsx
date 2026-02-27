@@ -1,9 +1,9 @@
 "use client";
 
-import HidePassword from "@/src/components/hidePassword";
-import LoginSignUpLayout from "@/src/components/LoginSignUpLayout";
-import ShowPassword from "@/src/components/showPassword";
-import { SignupSchemaType, signupSchema } from "@/src/schemas/signupSchema";
+import HidePassword from "@/components/hidePassword";
+import LoginSignUpLayout from "@/components/LoginSignUpLayout";
+import ShowPassword from "@/components/showPassword";
+import { SignupSchemaType, signupSchema } from "@/schemas/signupSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

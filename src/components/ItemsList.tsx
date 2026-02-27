@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import SelectedItem from "./SelectedItem";
-import { getUrlFavicon } from "@/src/utils/getFaviconUrl";
+import { getUrlFavicon } from "@/utils/getFaviconUrl";
 import { useAppContext } from "../context/appContent";
 import { ItemSchemaType } from "../schemas/ItemSchema";
 import { Ellipsis } from "lucide-react";
@@ -14,7 +14,7 @@ export default function ItemsList({ data }: { data: ItemSchemaType[] }) {
 
   if (searchQuery) {
     data = data.filter((item: ItemSchemaType) =>
-      item.title.includes(searchQuery)
+      item.title.includes(searchQuery),
     );
   }
 
