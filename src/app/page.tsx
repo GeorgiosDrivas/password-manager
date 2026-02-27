@@ -13,12 +13,8 @@ import {
   Eye,
   EyeOff,
   ArrowRight,
-  Lock,
-  User,
   AlertCircle,
   Loader2,
-  Fingerprint,
-  KeyRound,
 } from "lucide-react";
 
 export default function Login() {
@@ -31,7 +27,6 @@ export default function Login() {
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
-    clearErrors,
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
   });
