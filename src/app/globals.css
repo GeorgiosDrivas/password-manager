@@ -53,14 +53,6 @@ input {
   line-height: 50px;
 }
 
-button {
-  background-color: #7a37fd;
-  padding: 10px 50px;
-  border-radius: 7px;
-  color: #fff;
-  transition: all 0.3s;
-}
-
 input:focus {
   outline: none;
 }
@@ -139,10 +131,6 @@ input:focus {
   top: 1%;
   left: -5%;
   background-color: transparent;
-}
-
-.btn-hover:hover {
-  background-color: #915ff3;
 }
 
 #edit-selected-item {
