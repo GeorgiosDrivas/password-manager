@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import NewItem from "../../../components/newItem";
+import NewItem from "@/components/newItem";
 import { auth } from "../../../../auth";
 import DashboardComponent from "@/components/dashboard";
 

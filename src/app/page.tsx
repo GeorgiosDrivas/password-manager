@@ -49,7 +49,7 @@ export default function Login() {
           return;
         }
 
-        router.push("/dashboard/items");
+        router.push("/dashboard");
       } catch (error) {
         setError("root", {
           type: "manual",

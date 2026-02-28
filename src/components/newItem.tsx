@@ -25,7 +25,7 @@ export default function NewItem({ userId }: { userId: string }) {
           userId,
         }),
       });
-      router.push("/dashboard/items");
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error adding new item:", error);
     }
