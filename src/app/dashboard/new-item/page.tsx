@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import NewItem from "../../../components/newItem";
-import Dashboard from "../page";
 import { auth } from "../../../../auth";
+import DashboardComponent from "@/components/dashboard";
 
 export default async function NewItemPage() {
   const session = await auth();
@@ -11,8 +11,8 @@ export default async function NewItemPage() {
   }
 
   return (
-    <Dashboard>
+    <DashboardComponent>
       <NewItem userId={session.user.id} />
-    </Dashboard>
+    </DashboardComponent>
   );
 }
