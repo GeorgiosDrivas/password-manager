@@ -46,18 +46,18 @@ export default async function DashboardComponent({
 
   const navItems = [
     ...itemsList.map((item: any) => ({
-      href: `/dashboard/${item.id}`,
+      href: `/dashboard/items/${item.id}` as const,
       icon: Shield,
       label: item.title,
       description: "Saved password",
     })),
     {
-      href: "/dashboard/new-item",
+      href: "/dashboard/new-item" as const,
       icon: Plus,
       label: "Add New",
       description: "Create password",
     },
-  ];
+  ] as const;
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -100,7 +100,7 @@ export default async function DashboardComponent({
               <SearchIcon className="absolute right-3 top-3 h-4 w-4 text-emerald-500" />
               <Input
                 placeholder="Search passwords..."
-                className="pl-4 pr-10 py-2 bg-emerald-50 dark:bg-slate-800 border border-emerald-100 dark:border-emerald-900/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 rounded-xl transition-all"
+                className="pl-4 pr-10 py-2 dark:bg-slate-800 border border-emerald-100 dark:border-emerald-900/40 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 rounded-xl transition-all"
               />
             </div>
           </div>
