@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
-import { auth } from "../../../auth";
+import { auth } from "../../auth";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -21,10 +21,21 @@ import {
   LogOut,
   ChevronRight,
 } from "lucide-react";
+import { prisma } from "@/lib/prisma";
 
-export default async function Dashboard({ children }: { children: ReactNode }) {
+export default async function DashboardComponent({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const session = await auth();
   if (!session) redirect("/");
+
+  const userId = Number(session.user.id);
+
+  const itemsList = await prisma.item.findMany({
+    where: { userId },
+  });
 
   const userInitials =
     session.user?.name
@@ -34,12 +45,17 @@ export default async function Dashboard({ children }: { children: ReactNode }) {
       .toUpperCase() || "U";
 
   const navItems = [
+    ...itemsList.map((item: any) => ({
+      href: `/dashboard/${item.id}`,
+      icon: Shield,
+      label: item.title,
+      description: "Saved password",
+    })),
     {
       href: "/dashboard/new-item",
       icon: Plus,
       label: "Add New",
       description: "Create password",
-      variant: "default" as const,
     },
   ];
 

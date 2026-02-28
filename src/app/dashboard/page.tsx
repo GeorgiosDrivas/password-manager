@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import Dashboard from "../page";
-import { auth } from ";
+import { auth } from "../../../auth";
 import { prisma } from "@/lib/prisma";
+import DashboardComponent from "@/components/dashboard";
 
 export default async function Items() {
   const session = await auth();
@@ -17,9 +17,9 @@ export default async function Items() {
 
   return (
     <>
-      <Dashboard>
-        <ItemsList data={data} />
-      </Dashboard>
+      <DashboardComponent>
+        <div>Your dashboard content</div>
+      </DashboardComponent>
     </>
   );
 }
