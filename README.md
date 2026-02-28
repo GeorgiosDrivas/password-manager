@@ -1,28 +1,49 @@
-# Password Manager
+# 🔐 Password Manager
 
-### Work in progress
+A secure, modern password manager built with **Next.js**, **NextAuth**, **Prisma**, and **PostgreSQL**.  
+Designed with security, performance, and clean UI in mind.
 
-A secure and modern password manager web application built with Next.js, NextAuth.js, React, Prisma, and PostgreSQL.
+> ⚠️ This project is currently a work in progress.
 
-<img width="1360" height="642" alt="1" src="https://github.com/user-attachments/assets/1e678e82-bcf3-4697-8687-bb2981ed70bc" />
-<img width="1360" height="643" alt="2" src="https://github.com/user-attachments/assets/35b12cb0-d74e-4143-b92c-fd5107387c20" />
-<img width="1360" height="642" alt="3" src="https://github.com/user-attachments/assets/a1798816-79a6-47d0-8134-f265c2251693" />
-<img width="1360" height="643" alt="4" src="https://github.com/user-attachments/assets/7d635581-97c8-475d-a752-4a7da38a3fe0" />
-<img width="1360" height="642" alt="5" src="https://github.com/user-attachments/assets/1f913883-f001-43ea-b591-a2d31051a5bf" />
+---
 
-## Tech Stack
+## 📸 Preview
 
-- [Next.js](https://nextjs.org/)
-- [React](https://react.dev/)
-- [Prisma](https://www.prisma.io/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [NextAuth.js](https://next-auth.js.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
+<img width="1919" height="944" alt="Dashboard Screenshot" src="https://github.com/user-attachments/assets/9cb497b2-b929-4ea3-b389-d22daf3a5413" />
+<img width="1919" height="945" alt="Login Screenshot" src="https://github.com/user-attachments/assets/de1e9844-202d-4679-8384-6e04f4dbd7ac" />
+<img width="1919" height="945" alt="Vault Screenshot" src="https://github.com/user-attachments/assets/ea008fa4-a8c2-44d1-a63c-94d4e3153e11" />
 
-## Features
+---
 
-- User authentication (NextAuth.js with credentials)
-- Store, view, and manage password items
-- Favicon preview for stored URLs
-- Secure user data storage with Prisma ORM
-- Tailwind CSS for styling
+## 🚀 Tech Stack
+
+- **Next.js** – Full-stack React framework  
+- **React** – Component-based UI  
+- **NextAuth.js** – Authentication system  
+- **Prisma** – Type-safe ORM  
+- **PostgreSQL** – Relational database  
+- **Tailwind CSS** – Utility-first styling
+- **Zod** - TypeScript-first schema validation
+
+---
+
+## ✨ Features
+
+- 🔐 Secure user authentication (credentials provider)
+- 🗂 Store and manage password entries
+- 🌐 Automatic favicon preview from saved URLs
+- 🛡 Isolated user data (per-user vault)
+- ⚡ Fast and responsive UI
+- 🎨 Modern design with Tailwind CSS
+
+---
+
+## 🏗 Architecture Overview
+
+- **Frontend:** Next.js App Router + React components  
+- **Backend:** Next.js API routes  
+- **Authentication:** Session-based auth via NextAuth  
+- **Database Layer:** Prisma ORM  
+- **Database:** PostgreSQL  
+
+---
