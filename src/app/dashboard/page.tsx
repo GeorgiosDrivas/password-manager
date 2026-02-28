@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { auth } from "../../../auth";
+import { auth } from "@core/auth";
 import DashboardComponent from "@/components/dashboard";
 import { prisma } from "@/lib/prisma";
 import PasswordTable from "@/components/passwordTable";

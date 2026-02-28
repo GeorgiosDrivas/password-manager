@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
-import { auth } from "../../auth";
+import { auth } from "@core/auth";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

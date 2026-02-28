@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { auth } from "../../../../../auth";
+import { auth } from "@core/auth";
 import SelectedItemClient from "@/components/selectedItemClient";
 import { prisma } from "@/lib/prisma";
 import DashboardComponent from "@/components/dashboard";

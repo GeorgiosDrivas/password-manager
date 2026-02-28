@@ -1,6 +1,6 @@
 export const runtime = "nodejs";
 
-import { auth } from "./auth";
+import { auth } from "@core/auth";
 import { NextResponse } from "next/server";
 
 export default auth((req) => {
