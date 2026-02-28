@@ -1,12 +1,12 @@
 import SettingsPage from "@/components/Settings";
-import Dashboard from "../page";
+import DashboardComponent from "@/components/dashboard";
 
 export default function Settings() {
   return (
     <>
-      <Dashboard>
+      <DashboardComponent>
         <SettingsPage />
-      </Dashboard>
+      </DashboardComponent>
     </>
   );
 }

@@ -1,0 +1,27 @@
+import { redirect } from "next/navigation";
+import { auth } from "../../../../../auth";
+import SelectedItemClient from "@/components/selectedItemClient";
+import { prisma } from "@/lib/prisma";
+import DashboardComponent from "@/components/dashboard";
+
+export default async function ItemPage({ params }: { params: { id: string } }) {
+  const session = await auth();
+
+  if (!session) {
+    redirect("/");
+  }
+
+  const item = await prisma.item.findUnique({
+    where: { id: Number(params.id), userId: Number(session.user.id) },
+  });
+
+  if (!item) {
+    redirect("/dashboard");
+  }
+
+  return (
+    <DashboardComponent>
+      <SelectedItemClient item={item} />
+    </DashboardComponent>
+  );
+}
