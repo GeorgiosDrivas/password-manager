@@ -158,7 +158,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-4 flex items-center focus:outline-none"
+                    className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center focus:outline-none"
                   >
                     <motion.div
                       whileTap={{ scale: 0.9 }}
@@ -193,7 +193,7 @@ export default function Login() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full mt-8 relative overflow-hidden group bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/25 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-emerald-500/40 hover:shadow-xl"
+                className="cursor-pointer w-full mt-8 relative overflow-hidden group bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/25 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-emerald-500/40 hover:shadow-xl"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 <span className="relative flex items-center justify-center gap-2">
