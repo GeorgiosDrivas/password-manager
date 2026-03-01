@@ -131,13 +131,13 @@ export default function Signup() {
               <input
                 {...register("name")}
                 placeholder="Full Name"
-                className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all"
+                className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all text-slate-800 dark:text-slate-200 font-medium"
               />
 
               <input
                 {...register("username")}
                 placeholder="Username"
-                className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all"
+                className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all text-slate-800 dark:text-slate-200 font-medium"
               />
 
               <div className="relative">
