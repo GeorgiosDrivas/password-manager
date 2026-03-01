@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { ItemSchemaType } from "@/schemas/ItemSchema";
 import { getUrlFavicon } from "@/utils/getFaviconUrl";
 
 import { Button } from "@/components/ui/button";
@@ -24,10 +23,7 @@ import {
 import { ExternalLink, Trash2, Globe, Edit3 } from "lucide-react";
 import EditSelectedItem from "@/components/editSelectedItem";
 import ViewSelectedItem from "@/components/viewSelectedItem";
-
-interface SelectedItemClientProps {
-  item: ItemSchemaType;
-}
+import { SelectedItemClientProps } from "@/types/item";
 
 export default function SelectedItem({ item }: SelectedItemClientProps) {
   const router = useRouter();

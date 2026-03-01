@@ -1,17 +1,14 @@
-import { ItemSchemaType } from "@/schemas/ItemSchema";
 import { User, Lock, EyeOff, Eye, Copy } from "lucide-react";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { viewSelectedItemProps } from "@/types/item";
 
 export default function ViewSelectedItem({
   item,
   onCopy,
-}: {
-  item: ItemSchemaType;
-  onCopy: (text: string) => void;
-}) {
+}: viewSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const fields = [

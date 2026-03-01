@@ -1,8 +1,4 @@
-import {
-  ItemSchemaType,
-  noIdItemSchema,
-  noIdItemSchemaType,
-} from "@/schemas/ItemSchema";
+import { noIdItemSchema, noIdItemSchemaType } from "@/schemas/ItemSchema";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,16 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Eye, EyeOff, Loader2, Save } from "lucide-react";
+import { EditSelectedItemProps } from "@/types/item";
 
 export default function EditSelectedItem({
   item,
   onCancel,
   onSuccess,
-}: {
-  item: ItemSchemaType;
-  onCancel: () => void;
-  onSuccess: () => void;
-}) {
+}: EditSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
