@@ -33,7 +33,10 @@ export default function ViewSelectedItem({
     <div className="space-y-6">
       {fields.map((field) => (
         <div key={field.label} className="space-y-2">
-          <Label className="flex items-center gap-2 text-muted-foreground">
+          <Label
+            htmlFor={field.label.toLowerCase()}
+            className="flex items-center gap-2 text-muted-foreground"
+          >
             <field.icon className="w-4 h-4" />
             {field.label}
           </Label>
@@ -48,6 +51,8 @@ export default function ViewSelectedItem({
                     : "text"
                 }
                 value={field.value}
+                id={field.label.toLowerCase()}
+                name={field.label.toLowerCase()}
                 className="pr-10 font-mono bg-muted/40"
               />
 
@@ -56,7 +61,7 @@ export default function ViewSelectedItem({
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="absolute right-0 top-0 h-full px-3"
+                  className="cursor-pointer absolute right-0 top-0 h-full px-3"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
