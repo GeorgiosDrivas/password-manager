@@ -74,6 +74,7 @@ export default function ViewSelectedItem({
               variant="outline"
               size="icon"
               onClick={() => field.value && onCopy(field.value)}
+              className="cursor-pointer"
             >
               <Copy className="w-4 h-4" />
             </Button>
