@@ -17,11 +17,10 @@ Designed with security, performance, and clean UI in mind.
 
 ## 🚀 Tech Stack
 
-- **Next.js** – Full-stack React framework  
-- **React** – Component-based UI  
-- **NextAuth.js** – Authentication system  
-- **Prisma** – Type-safe ORM  
-- **PostgreSQL** – Relational database  
+- **Next.js** – Full-stack React framework
+- **NextAuth.js** – Authentication system
+- **Prisma** – Type-safe ORM
+- **PostgreSQL** – Relational database
 - **Tailwind CSS** – Utility-first styling
 - **Zod** - TypeScript-first schema validation
 
@@ -40,10 +39,10 @@ Designed with security, performance, and clean UI in mind.
 
 ## 🏗 Architecture Overview
 
-- **Frontend:** Next.js App Router + React components  
-- **Backend:** Next.js API routes  
-- **Authentication:** Session-based auth via NextAuth  
-- **Database Layer:** Prisma ORM  
-- **Database:** PostgreSQL  
+- **Frontend:** Next.js App Router
+- **Backend:** Next.js API routes
+- **Authentication:** Session-based auth via NextAuth
+- **Database Layer:** Prisma ORM
+- **Database:** PostgreSQL
 
 ---
