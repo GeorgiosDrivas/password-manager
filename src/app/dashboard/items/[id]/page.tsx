@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@core/auth";
-import SelectedItemClient from "@/components/selectedItemClient";
+import SelectedItem from "@/components/selectedItem";
 import { prisma } from "@/lib/prisma";
 import DashboardComponent from "@/components/dashboard";
 
@@ -21,7 +21,7 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
 
   return (
     <DashboardComponent>
-      <SelectedItemClient item={item} />
+      <SelectedItem item={item} />
     </DashboardComponent>
   );
 }

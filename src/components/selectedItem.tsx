@@ -49,7 +49,7 @@ interface SelectedItemClientProps {
   item: ItemSchemaType;
 }
 
-export default function SelectedItemClient({ item }: SelectedItemClientProps) {
+export default function SelectedItem({ item }: SelectedItemClientProps) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
 
