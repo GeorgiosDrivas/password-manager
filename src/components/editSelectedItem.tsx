@@ -53,42 +53,43 @@ export default function EditSelectedItem({
   return (
     <form onSubmit={handleSubmit(handleEditItem)} className="space-y-6">
       <div className="space-y-2">
-        <Label>Title</Label>
-        <Input {...register("title")} />
+        <Label htmlFor="title">Title</Label>
+        <Input id="title" {...register("title")} />
         {errors.title && (
           <p className="text-xs text-destructive">{errors.title.message}</p>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label>Website URL</Label>
-        <Input {...register("url")} />
+        <Label htmlFor="url">Website URL</Label>
+        <Input id="url" {...register("url")} />
         {errors.url && (
           <p className="text-xs text-destructive">{errors.url.message}</p>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label>Username</Label>
-        <Input {...register("username")} />
+        <Label htmlFor="username">Username</Label>
+        <Input id="username" {...register("username")} />
         {errors.username && (
           <p className="text-xs text-destructive">{errors.username.message}</p>
         )}
       </div>
 
       <div className="space-y-2">
-        <Label>Password</Label>
+        <Label htmlFor="password">Password</Label>
         <div className="relative">
           <Input
             type={showPassword ? "text" : "password"}
             {...register("password")}
             className="pr-10"
+            id="password"
           />
           <Button
             type="button"
             variant="ghost"
             size="sm"
-            className="absolute right-0 top-0 h-full px-3"
+            className="cursor-pointer absolute right-0 top-0 h-full px-3"
             onClick={() => setShowPassword(!showPassword)}
           >
             {showPassword ? (
@@ -107,7 +108,7 @@ export default function EditSelectedItem({
         <Button
           type="button"
           variant="outline"
-          className="flex-1"
+          className="cursor-pointer flex-1"
           onClick={onCancel}
         >
           Cancel
@@ -115,7 +116,7 @@ export default function EditSelectedItem({
 
         <Button
           type="submit"
-          className="flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700"
+          className="cursor-pointer flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700"
           disabled={isSubmitting}
         >
           {isSubmitting ? (
