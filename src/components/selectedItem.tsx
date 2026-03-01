@@ -80,7 +80,7 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
                 size="icon"
                 variant="ghost"
                 onClick={() => setIsEditing(true)}
-                className="hover:bg-emerald-100 dark:hover:bg-emerald-900/30"
+                className="cursor-pointer hover:bg-emerald-100 dark:hover:bg-emerald-900/30"
               >
                 <Edit3 className="w-4 h-4 text-emerald-600" />
               </Button>
@@ -92,7 +92,7 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
                   <Button
                     size="icon"
                     variant="ghost"
-                    className="hover:bg-red-100 dark:hover:bg-red-900/30"
+                    className="cursor-pointer hover:bg-red-100 dark:hover:bg-red-900/30"
                   >
                     <Trash2 className="w-4 h-4 text-red-600" />
                   </Button>
