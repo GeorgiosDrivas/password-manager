@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import {
-  ItemSchemaType,
-  noIdItemSchema,
-  noIdItemSchemaType,
-} from "@/schemas/ItemSchema";
+import { ItemSchemaType } from "@/schemas/ItemSchema";
 import { getUrlFavicon } from "@/utils/getFaviconUrl";
 
 import { Button } from "@/components/ui/button";
@@ -25,24 +21,9 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-import {
-  ArrowLeft,
-  ExternalLink,
-  Trash2,
-  Globe,
-  Link as LinkIcon,
-  EyeOff,
-  Eye,
-  Loader2,
-  Save,
-  Edit3,
-  Copy,
-  User,
-  Lock,
-} from "lucide-react";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import { ExternalLink, Trash2, Globe, Edit3 } from "lucide-react";
 import EditSelectedItem from "@/components/editSelectedItem";
+import ViewSelectedItem from "@/components/viewSelectedItem";
 
 interface SelectedItemClientProps {
   item: ItemSchemaType;
@@ -154,7 +135,7 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
       <Separator />
 
       {!isEditing ? (
-        <ViewMode item={item} onCopy={handleCopy} />
+        <ViewSelectedItem item={item} onCopy={handleCopy} />
       ) : (
         <EditSelectedItem
           item={item}
@@ -165,83 +146,6 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
           }}
         />
       )}
-    </div>
-  );
-}
-
-function ViewMode({
-  item,
-  onCopy,
-}: {
-  item: ItemSchemaType;
-  onCopy: (text: string) => void;
-}) {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const fields = [
-    {
-      label: "Username",
-      value: item.username,
-      icon: User,
-      type: "text" as const,
-    },
-    {
-      label: "Password",
-      value: item.password,
-      icon: Lock,
-      type: "password" as const,
-    },
-  ];
-
-  return (
-    <div className="space-y-6">
-      {fields.map((field) => (
-        <div key={field.label} className="space-y-2">
-          <Label className="flex items-center gap-2 text-muted-foreground">
-            <field.icon className="w-4 h-4" />
-            {field.label}
-          </Label>
-
-          <div className="flex gap-2">
-            <div className="flex-1 relative">
-              <Input
-                readOnly
-                type={
-                  field.type === "password" && !showPassword
-                    ? "password"
-                    : "text"
-                }
-                value={field.value}
-                className="pr-10 font-mono bg-muted/40"
-              />
-
-              {field.type === "password" && (
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  className="absolute right-0 top-0 h-full px-3"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="w-4 h-4" />
-                  ) : (
-                    <Eye className="w-4 h-4" />
-                  )}
-                </Button>
-              )}
-            </div>
-
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => field.value && onCopy(field.value)}
-            >
-              <Copy className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
