@@ -55,7 +55,6 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                 key={item.id}
                 className="border-t hover:bg-emerald-50/50 dark:hover:bg-emerald-900/20 transition-colors"
               >
-                {/* Title */}
                 <td className="px-4 py-3 font-medium">
                   <a
                     href={item.url}
@@ -67,7 +66,6 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                   </a>
                 </td>
 
-                {/* Username */}
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     {item.username}
@@ -82,7 +80,6 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                   </div>
                 </td>
 
-                {/* Password */}
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="font-mono">
