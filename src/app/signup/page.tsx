@@ -150,7 +150,7 @@ export default function Signup() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-4 flex items-center focus:outline-none"
+                  className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center focus:outline-none"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -210,7 +210,7 @@ export default function Signup() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full mt-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300 disabled:opacity-70"
+                className="cursor-pointer w-full mt-6 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all duration-300 disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <Loader2 className="w-5 h-5 animate-spin mx-auto" />
