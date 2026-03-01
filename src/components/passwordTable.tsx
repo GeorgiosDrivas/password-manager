@@ -75,6 +75,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                       size="icon"
                       variant="ghost"
                       onClick={() => copyToClipboard(item.username)}
+                      className="cursor-pointer"
                     >
                       <Copy className="w-4 h-4" />
                     </Button>
@@ -92,6 +93,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                       size="icon"
                       variant="ghost"
                       onClick={() => togglePassword(item.id)}
+                      className="cursor-pointer"
                     >
                       {isVisible ? (
                         <EyeOff className="w-4 h-4" />
@@ -104,6 +106,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                       size="icon"
                       variant="ghost"
                       onClick={() => copyToClipboard(item.password)}
+                      className="cursor-pointer"
                     >
                       <Copy className="w-4 h-4" />
                     </Button>
