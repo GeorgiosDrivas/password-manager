@@ -78,7 +78,6 @@ export default function SelectedItemClient({ item }: SelectedItemClientProps) {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div className="flex items-start gap-6">
         <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-muted border shadow-sm">
           <Image
@@ -96,7 +95,6 @@ export default function SelectedItemClient({ item }: SelectedItemClientProps) {
           <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold">{item.title}</h1>
 
-            {/* Edit Button */}
             {!isEditing && (
               <Button
                 size="icon"
@@ -108,7 +106,6 @@ export default function SelectedItemClient({ item }: SelectedItemClientProps) {
               </Button>
             )}
 
-            {/* Delete Button */}
             {!isEditing && (
               <AlertDialog>
                 <AlertDialogTrigger asChild>
@@ -298,7 +295,6 @@ function EditMode({
 
   return (
     <form onSubmit={handleSubmit(handleEditItem)} className="space-y-6">
-      {/* Title */}
       <div className="space-y-2">
         <Label>Title</Label>
         <Input {...register("title")} />
@@ -307,7 +303,6 @@ function EditMode({
         )}
       </div>
 
-      {/* URL */}
       <div className="space-y-2">
         <Label>Website URL</Label>
         <Input {...register("url")} />
@@ -316,7 +311,6 @@ function EditMode({
         )}
       </div>
 
-      {/* Username */}
       <div className="space-y-2">
         <Label>Username</Label>
         <Input {...register("username")} />
@@ -325,7 +319,6 @@ function EditMode({
         )}
       </div>
 
-      {/* Password */}
       <div className="space-y-2">
         <Label>Password</Label>
         <div className="relative">
@@ -353,7 +346,6 @@ function EditMode({
         )}
       </div>
 
-      {/* Buttons */}
       <div className="flex gap-3 pt-4">
         <Button
           type="button"

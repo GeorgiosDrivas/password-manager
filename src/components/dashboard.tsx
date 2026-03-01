@@ -157,7 +157,6 @@ export default async function DashboardComponent({
           </div>
         </aside>
 
-        {/* MAIN */}
         <main className="flex-1 flex flex-col min-w-0">
           <header className="h-16 border-b border-emerald-100 dark:border-emerald-900/30 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl sticky top-0 z-30 flex items-center justify-between px-6">
             <div className="flex items-center gap-4">
