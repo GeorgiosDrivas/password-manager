@@ -4,7 +4,13 @@ import SelectedItem from "@/components/selectedItem";
 import { prisma } from "@/lib/prisma";
 import DashboardComponent from "@/components/dashboard";
 
-export default async function ItemPage({ params }: { params: { id: string } }) {
+export default async function ItemPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
   const session = await auth();
 
   if (!session) {
@@ -12,7 +18,7 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
   }
 
   const item = await prisma.item.findUnique({
-    where: { id: Number(params.id), userId: Number(session.user.id) },
+    where: { id: Number(id), userId: Number(session.user.id) },
   });
 
   if (!item) {
