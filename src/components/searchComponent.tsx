@@ -28,7 +28,6 @@ export default function SearchComponent({ navItems }: Props) {
 
   return (
     <>
-      {/* Search */}
       <div className="px-4 py-4">
         <div className="relative">
           <SearchIcon className="absolute right-3 top-3 h-4 w-4 text-emerald-500" />
@@ -41,7 +40,6 @@ export default function SearchComponent({ navItems }: Props) {
         </div>
       </div>
 
-      {/* Navigation */}
       <div className="flex-1 px-3 py-2 space-y-6 overflow-y-auto">
         <div className="space-y-2">
           <p className="px-3 text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">
