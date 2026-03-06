@@ -11,6 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 
 import { Plus, Search as SearchIcon, Shield, LogOut, ChevronRight } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
+import { ItemSchemaType } from '@/schemas/ItemSchema';
 
 export default async function DashboardComponent({ children }: { children: ReactNode }) {
   const session = await auth();
@@ -25,12 +26,12 @@ export default async function DashboardComponent({ children }: { children: React
   const userInitials =
     session.user?.name
       ?.split(' ')
-      .map((n) => n[0])
+      .map((n: string) => n[0])
       .join('')
       .toUpperCase() || 'U';
 
   const navItems = [
-    ...itemsList.map((item: any) => ({
+    ...itemsList.map((item: ItemSchemaType) => ({
       href: `/dashboard/items/${item.id}` as const,
       icon: Shield,
       label: item.title,

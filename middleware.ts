@@ -1,14 +1,21 @@
 export const runtime = 'nodejs';
 
 import { auth } from '@core/auth';
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
-export default auth((req) => {
-  const { pathname } = req.nextUrl;
+type AuthenticatedRequest = NextRequest & {
+  auth: {
+    user?: {
+      id?: string;
+      username?: string;
+      name?: string | null;
+      email?: string | null;
+    };
+  } | null;
+};
 
-  const protectedPaths = ['/dashboard', '/api/delete-item', '/api/edit-item', '/api/items'];
-
-  if (!req.auth && protectedPaths.some((path) => pathname.startsWith(path))) {
+export default auth((req: AuthenticatedRequest) => {
+  if (!req.auth) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 

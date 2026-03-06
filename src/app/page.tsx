@@ -42,7 +42,7 @@ export default function Login() {
       }
 
       router.push('/dashboard');
-    } catch (error) {
+    } catch {
       setError('root', {
         type: 'manual',
         message: 'An unexpected error occurred',
