@@ -14,3 +14,10 @@ export interface viewSelectedItemProps {
   item: ItemSchemaType;
   onCopy: (text: string) => void;
 }
+
+export type NavItem = {
+  href: string;
+  icon: string;
+  label: string;
+  description: string;
+};
