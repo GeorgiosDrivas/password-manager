@@ -40,12 +40,6 @@ export default async function DashboardComponent({ children }: { children: React
       label: item.title,
       description: 'Saved password',
     })),
-    {
-      href: '/dashboard/new-item',
-      icon: 'Plus',
-      label: 'Add New',
-      description: 'Create password',
-    },
   ];
 
   return (

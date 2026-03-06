@@ -75,6 +75,25 @@ export default function SearchComponent({ navItems }: Props) {
               </Tooltip>
             );
           })}
+          <Tooltip key="/dashboard/new-item">
+            <TooltipTrigger asChild>
+              <Link href="/dashboard/new-item">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
+                >
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
+                    <Plus className="w-4 h-4" />
+                  </div>
+                  <span className="text-sm font-medium">Add New</span>
+                  <ChevronRight className="w-4 h-4 ml-auto text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Button>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="hidden lg:block">
+              Create password
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </>
