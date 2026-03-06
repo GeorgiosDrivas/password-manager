@@ -23,6 +23,7 @@ Designed with security, performance, and clean UI in mind.
 - **PostgreSQL** – Relational database
 - **Tailwind CSS** – Utility-first styling
 - **Zod** - TypeScript-first schema validation
+- **Husky** - Git Hooks management
 
 ---
 
