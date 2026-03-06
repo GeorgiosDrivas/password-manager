@@ -1,18 +1,14 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { ReactNode } from "react";
-import { AppProvider } from "../context/appContent";
+import type { Metadata } from 'next';
+import './globals.css';
+import { ReactNode } from 'react';
+import { AppProvider } from '../context/appContent';
 
 export const metadata: Metadata = {
-  title: "Password Manager",
-  description: "Create and manage your passwords securely",
+  title: 'Password Manager',
+  description: 'Create and manage your passwords securely',
 };
 
-export default async function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>

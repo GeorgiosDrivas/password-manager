@@ -1,13 +1,13 @@
-import { redirect } from "next/navigation";
-import NewItem from "@/components/newItem";
-import { auth } from "@core/auth";
-import DashboardComponent from "@/components/dashboard";
+import { redirect } from 'next/navigation';
+import NewItem from '@/components/newItem';
+import { auth } from '@core/auth';
+import DashboardComponent from '@/components/dashboard';
 
 export default async function NewItemPage() {
   const session = await auth();
 
   if (!session) {
-    redirect("/");
+    redirect('/');
   }
 
   return (

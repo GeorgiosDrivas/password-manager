@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Eye, EyeOff, Copy } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Eye, EyeOff, Copy } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface Item {
   id: number;
@@ -17,9 +17,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
 
   const togglePassword = (id: number) => {
     setVisiblePasswords((prev) =>
-      prev.includes(id)
-        ? prev.filter((itemId) => itemId !== id)
-        : [...prev, id],
+      prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
     );
   };
 
@@ -28,11 +26,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
   };
 
   if (!items.length) {
-    return (
-      <div className="text-muted-foreground text-sm">
-        No passwords stored yet.
-      </div>
-    );
+    return <div className="text-muted-foreground text-sm">No passwords stored yet.</div>;
   }
 
   return (
@@ -82,9 +76,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
 
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono">
-                      {isVisible ? item.password : "••••••••"}
-                    </span>
+                    <span className="font-mono">{isVisible ? item.password : '••••••••'}</span>
 
                     <Button
                       size="icon"
@@ -92,11 +84,7 @@ export default function PasswordTable({ items }: { items: Item[] }) {
                       onClick={() => togglePassword(item.id)}
                       className="cursor-pointer"
                     >
-                      {isVisible ? (
-                        <EyeOff className="w-4 h-4" />
-                      ) : (
-                        <Eye className="w-4 h-4" />
-                      )}
+                      {isVisible ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </Button>
 
                     <Button

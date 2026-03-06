@@ -1,7 +1,7 @@
-"use client";
-import { ReactNode, useState } from "react";
-import LandingImage from "./LandingImage";
-import Loading from "./Loading";
+'use client';
+import { ReactNode, useState } from 'react';
+import LandingImage from './LandingImage';
+import Loading from './Loading';
 
 export default function LoginSignUpLayout({
   children,
@@ -14,10 +14,7 @@ export default function LoginSignUpLayout({
     <>
       {loading && <Loading />}
       <div className="grid grid-cols-2 h-screen p-5">
-        <section
-          id="login-section"
-          className="flex justify-center items-start flex-col"
-        >
+        <section id="login-section" className="flex justify-center items-start flex-col">
           {children(setLoading)}
         </section>
         <LandingImage />

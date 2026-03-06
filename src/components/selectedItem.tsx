@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { getUrlFavicon } from "@/utils/getFaviconUrl";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { getUrlFavicon } from '@/utils/getFaviconUrl';
 
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 import {
   AlertDialog,
@@ -18,12 +18,12 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from '@/components/ui/alert-dialog';
 
-import { ExternalLink, Trash2, Globe, Edit3 } from "lucide-react";
-import EditSelectedItem from "@/components/editSelectedItem";
-import ViewSelectedItem from "@/components/viewSelectedItem";
-import { SelectedItemClientProps } from "@/types/item";
+import { ExternalLink, Trash2, Globe, Edit3 } from 'lucide-react';
+import EditSelectedItem from '@/components/editSelectedItem';
+import ViewSelectedItem from '@/components/viewSelectedItem';
+import { SelectedItemClientProps } from '@/types/item';
 
 export default function SelectedItem({ item }: SelectedItemClientProps) {
   const router = useRouter();
@@ -32,19 +32,19 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
   const handleDelete = async () => {
     try {
       const response = await fetch(`/api/items/${item.id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ itemId: item.id }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to delete item");
+        throw new Error('Failed to delete item');
       }
 
-      router.push("/dashboard");
+      router.push('/dashboard');
       router.refresh();
     } catch (error) {
-      console.error("Error deleting item:", error);
+      console.error('Error deleting item:', error);
     }
   };
 
@@ -62,7 +62,7 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
             fill
             className="object-cover"
             onError={(e) => {
-              (e.target as HTMLImageElement).src = "/globe.svg";
+              (e.target as HTMLImageElement).src = '/globe.svg';
             }}
           />
         </div>
@@ -96,20 +96,15 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
 
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>
-                      Are you absolutely sure?
-                    </AlertDialogTitle>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This will permanently delete the password for{" "}
-                      <strong>{item.title}</strong>.
+                      This will permanently delete the password for <strong>{item.title}</strong>.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
 
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={handleDelete}>
-                      Delete
-                    </AlertDialogAction>
+                    <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>

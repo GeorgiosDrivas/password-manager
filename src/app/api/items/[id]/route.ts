@@ -1,23 +1,23 @@
-import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { NextResponse } from 'next/server';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request) {
   let data;
   try {
     data = await req.json();
   } catch {
-    return new NextResponse("Invalid JSON", { status: 400 });
+    return new NextResponse('Invalid JSON', { status: 400 });
   }
 
   const { title, username, password, url, userId } = data;
 
   if (!title || !username || !password || !url) {
-    return new NextResponse("Missing fields", { status: 400 });
+    return new NextResponse('Missing fields', { status: 400 });
   }
 
   const parsedUserId = parseInt(userId);
   if (isNaN(parsedUserId)) {
-    return new NextResponse("Invalid userId", { status: 400 });
+    return new NextResponse('Invalid userId', { status: 400 });
   }
 
   await prisma.item.create({
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     },
   });
 
-  return NextResponse.json({ message: "New item created" });
+  return NextResponse.json({ message: 'New item created' });
 }
 
 export async function PUT(req: Request) {
@@ -38,14 +38,14 @@ export async function PUT(req: Request) {
   try {
     data = await req.json();
   } catch {
-    return new NextResponse("Invalid JSON", { status: 400 });
+    return new NextResponse('Invalid JSON', { status: 400 });
   }
 
   const { title, username, password, url, itemId } = data;
 
   const parsedItemId = parseInt(itemId);
   if (isNaN(parsedItemId)) {
-    return new NextResponse("Invalid item id", { status: 400 });
+    return new NextResponse('Invalid item id', { status: 400 });
   }
 
   await prisma.item.update({
@@ -66,18 +66,18 @@ export async function DELETE(req: Request) {
   try {
     data = await req.json();
   } catch {
-    return new NextResponse("Invalid JSON", { status: 400 });
+    return new NextResponse('Invalid JSON', { status: 400 });
   }
 
   const { itemId } = data;
 
   if (!itemId) {
-    return new NextResponse("Missing item ID", { status: 400 });
+    return new NextResponse('Missing item ID', { status: 400 });
   }
 
   const parsedItemId = parseInt(itemId);
   if (isNaN(parsedItemId)) {
-    return new NextResponse("Invalid item ID", { status: 400 });
+    return new NextResponse('Invalid item ID', { status: 400 });
   }
 
   await prisma.item.delete({
@@ -86,5 +86,5 @@ export async function DELETE(req: Request) {
     },
   });
 
-  return NextResponse.json({ message: "Item deleted" });
+  return NextResponse.json({ message: 'Item deleted' });
 }

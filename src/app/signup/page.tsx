@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
-import { SignupSchemaType, signupSchema } from "@/schemas/signupSchema";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, AnimatePresence } from "framer-motion";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
+import { SignupSchemaType, signupSchema } from '@/schemas/signupSchema';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Eye,
   EyeOff,
@@ -16,7 +16,7 @@ import {
   CheckCircle2,
   XCircle,
   ArrowRight,
-} from "lucide-react";
+} from 'lucide-react';
 
 export default function Signup() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function Signup() {
     resolver: zodResolver(signupSchema),
   });
 
-  const watchedPassword = watch("password", "");
+  const watchedPassword = watch('password', '');
   const [passwordStrength, setPasswordStrength] = useState(0);
 
   useEffect(() => {
@@ -45,35 +45,34 @@ export default function Signup() {
   }, [watchedPassword]);
 
   const getStrengthLabel = () => {
-    if (passwordStrength <= 25) return "Weak";
-    if (passwordStrength <= 50) return "Fair";
-    if (passwordStrength <= 75) return "Strong";
-    return "Very Strong";
+    if (passwordStrength <= 25) return 'Weak';
+    if (passwordStrength <= 50) return 'Fair';
+    if (passwordStrength <= 75) return 'Strong';
+    return 'Very Strong';
   };
 
   const handleSignup = async (data: SignupSchemaType) => {
     try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({}));
-        setError("root", {
-          type: "manual",
-          message:
-            errorData.message || "Failed to create account. Please try again.",
+        setError('root', {
+          type: 'manual',
+          message: errorData.message || 'Failed to create account. Please try again.',
         });
         return;
       }
 
-      router.push("/?registered=true");
+      router.push('/?registered=true');
     } catch {
-      setError("root", {
-        type: "manual",
-        message: "An unexpected error occurred.",
+      setError('root', {
+        type: 'manual',
+        message: 'An unexpected error occurred.',
       });
     }
   };
@@ -96,7 +95,7 @@ export default function Signup() {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+              transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
               className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/25"
             >
               <UserPlus className="w-10 h-10 text-white" />
@@ -115,7 +114,7 @@ export default function Signup() {
               {errors.root && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
+                  animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   className="mb-4 p-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 flex gap-3"
                 >
@@ -129,21 +128,21 @@ export default function Signup() {
 
             <form onSubmit={handleSubmit(handleSignup)} className="space-y-5">
               <input
-                {...register("name")}
+                {...register('name')}
                 placeholder="Full Name"
                 className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all text-slate-800 dark:text-slate-200 font-medium"
               />
 
               <input
-                {...register("username")}
+                {...register('username')}
                 placeholder="Username"
                 className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 focus:shadow-lg focus:shadow-emerald-500/10 outline-none transition-all text-slate-800 dark:text-slate-200 font-medium"
               />
 
               <div className="relative">
                 <input
-                  {...register("password")}
-                  type={showPassword ? "text" : "password"}
+                  {...register('password')}
+                  type={showPassword ? 'text' : 'password'}
                   className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl outline-none transition-all duration-200 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 focus:shadow-lg focus:shadow-emerald-500/10 placeholder:text-slate-400 text-slate-800 dark:text-slate-200 font-medium"
                   placeholder="Enter your password"
                 />
@@ -152,11 +151,7 @@ export default function Signup() {
                   onClick={() => setShowPassword(!showPassword)}
                   className="cursor-pointer absolute inset-y-0 right-0 pr-4 flex items-center focus:outline-none"
                 >
-                  {showPassword ? (
-                    <EyeOff className="w-5 h-5" />
-                  ) : (
-                    <Eye className="w-5 h-5" />
-                  )}
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
 
@@ -164,9 +159,7 @@ export default function Signup() {
                 <div>
                   <div className="flex justify-between text-xs mb-1">
                     <span className="text-slate-500">Password strength</span>
-                    <span className="font-medium text-emerald-500">
-                      {getStrengthLabel()}
-                    </span>
+                    <span className="font-medium text-emerald-500">{getStrengthLabel()}</span>
                   </div>
 
                   <div className="h-2 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
@@ -226,7 +219,7 @@ export default function Signup() {
 
           <div className="px-8 py-6 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
             <p className="text-center text-sm text-slate-600 dark:text-slate-400">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link
                 href="/"
                 className="text-emerald-600 dark:text-emerald-400 font-bold hover:text-emerald-700 transition-colors"

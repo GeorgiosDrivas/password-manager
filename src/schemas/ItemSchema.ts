@@ -1,11 +1,11 @@
-import z from "zod";
+import z from 'zod';
 
 export const itemSchema = z.object({
   id: z.number(),
-  title: z.string().min(3, "Title is required"),
+  title: z.string().min(3, 'Title is required'),
   username: z.string().optional(),
-  password: z.string().min(1, "Password is required"),
-  url: z.url("Invalid URL format"),
+  password: z.string().min(1, 'Password is required'),
+  url: z.url('Invalid URL format'),
 });
 
 export const noIdItemSchema = itemSchema.omit({ id: true });

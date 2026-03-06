@@ -1,18 +1,14 @@
-import { noIdItemSchema, noIdItemSchemaType } from "@/schemas/ItemSchema";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Eye, EyeOff, Loader2, Save } from "lucide-react";
-import { EditSelectedItemProps } from "@/types/item";
+import { noIdItemSchema, noIdItemSchemaType } from '@/schemas/ItemSchema';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Eye, EyeOff, Loader2, Save } from 'lucide-react';
+import { EditSelectedItemProps } from '@/types/item';
 
-export default function EditSelectedItem({
-  item,
-  onCancel,
-  onSuccess,
-}: EditSelectedItemProps) {
+export default function EditSelectedItem({ item, onCancel, onSuccess }: EditSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -32,8 +28,8 @@ export default function EditSelectedItem({
   const handleEditItem = async (data: noIdItemSchemaType) => {
     try {
       const response = await fetch(`/api/items/${item.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
           itemId: item.id,
@@ -41,12 +37,12 @@ export default function EditSelectedItem({
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update item");
+        throw new Error('Failed to update item');
       }
 
       onSuccess();
     } catch (error) {
-      console.error("Error updating item:", error);
+      console.error('Error updating item:', error);
     }
   };
 
@@ -54,34 +50,28 @@ export default function EditSelectedItem({
     <form onSubmit={handleSubmit(handleEditItem)} className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="title">Title</Label>
-        <Input id="title" {...register("title")} />
-        {errors.title && (
-          <p className="text-xs text-destructive">{errors.title.message}</p>
-        )}
+        <Input id="title" {...register('title')} />
+        {errors.title && <p className="text-xs text-destructive">{errors.title.message}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="url">Website URL</Label>
-        <Input id="url" {...register("url")} />
-        {errors.url && (
-          <p className="text-xs text-destructive">{errors.url.message}</p>
-        )}
+        <Input id="url" {...register('url')} />
+        {errors.url && <p className="text-xs text-destructive">{errors.url.message}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="username">Username</Label>
-        <Input id="username" {...register("username")} />
-        {errors.username && (
-          <p className="text-xs text-destructive">{errors.username.message}</p>
-        )}
+        <Input id="username" {...register('username')} />
+        {errors.username && <p className="text-xs text-destructive">{errors.username.message}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
         <div className="relative">
           <Input
-            type={showPassword ? "text" : "password"}
-            {...register("password")}
+            type={showPassword ? 'text' : 'password'}
+            {...register('password')}
             className="pr-10"
             id="password"
           />
@@ -92,16 +82,10 @@ export default function EditSelectedItem({
             className="cursor-pointer absolute right-0 top-0 h-full px-3"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? (
-              <EyeOff className="w-4 h-4" />
-            ) : (
-              <Eye className="w-4 h-4" />
-            )}
+            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </Button>
         </div>
-        {errors.password && (
-          <p className="text-xs text-destructive">{errors.password.message}</p>
-        )}
+        {errors.password && <p className="text-xs text-destructive">{errors.password.message}</p>}
       </div>
 
       <div className="flex gap-3 pt-4">

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { noIdItemSchema, noIdItemSchemaType } from "@/schemas/ItemSchema";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { noIdItemSchema, noIdItemSchemaType } from '@/schemas/ItemSchema';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
 
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
-import { Eye, EyeOff, Loader2, Plus } from "lucide-react";
+import { Eye, EyeOff, Loader2, Plus } from 'lucide-react';
 
 export default function NewItem({ userId }: { userId: string }) {
   const router = useRouter();
@@ -26,9 +26,9 @@ export default function NewItem({ userId }: { userId: string }) {
 
   const handleNewItem = async (data: noIdItemSchemaType) => {
     try {
-      const response = await fetch("/api/items/new", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/items/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...data,
           userId,
@@ -36,12 +36,12 @@ export default function NewItem({ userId }: { userId: string }) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create item");
+        throw new Error('Failed to create item');
       }
 
-      router.push("/dashboard");
+      router.push('/dashboard');
     } catch (error) {
-      console.error("Error adding new item:", error);
+      console.error('Error adding new item:', error);
     }
   };
 
@@ -49,26 +49,20 @@ export default function NewItem({ userId }: { userId: string }) {
     <form onSubmit={handleSubmit(handleNewItem)} className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="title">Title</Label>
-        <Input id="title" {...register("title")} />
-        {errors.title && (
-          <p className="text-xs text-destructive">{errors.title.message}</p>
-        )}
+        <Input id="title" {...register('title')} />
+        {errors.title && <p className="text-xs text-destructive">{errors.title.message}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="url">Website URL</Label>
-        <Input id="url" {...register("url")} />
-        {errors.url && (
-          <p className="text-xs text-destructive">{errors.url.message}</p>
-        )}
+        <Input id="url" {...register('url')} />
+        {errors.url && <p className="text-xs text-destructive">{errors.url.message}</p>}
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="username">Username</Label>
-        <Input id="username" {...register("username")} />
-        {errors.username && (
-          <p className="text-xs text-destructive">{errors.username.message}</p>
-        )}
+        <Input id="username" {...register('username')} />
+        {errors.username && <p className="text-xs text-destructive">{errors.username.message}</p>}
       </div>
 
       <div className="space-y-2">
@@ -76,8 +70,8 @@ export default function NewItem({ userId }: { userId: string }) {
         <div className="relative">
           <Input
             id="password"
-            type={showPassword ? "text" : "password"}
-            {...register("password")}
+            type={showPassword ? 'text' : 'password'}
+            {...register('password')}
             className="pr-10"
           />
 
@@ -88,17 +82,11 @@ export default function NewItem({ userId }: { userId: string }) {
             className="absolute right-0 top-0 h-full px-3 cursor-pointer"
             onClick={() => setShowPassword(!showPassword)}
           >
-            {showPassword ? (
-              <EyeOff className="w-4 h-4" />
-            ) : (
-              <Eye className="w-4 h-4" />
-            )}
+            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </Button>
         </div>
 
-        {errors.password && (
-          <p className="text-xs text-destructive">{errors.password.message}</p>
-        )}
+        {errors.password && <p className="text-xs text-destructive">{errors.password.message}</p>}
       </div>
 
       <Button

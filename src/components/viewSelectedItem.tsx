@@ -1,28 +1,25 @@
-import { User, Lock, EyeOff, Eye, Copy } from "lucide-react";
-import { useState } from "react";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { viewSelectedItemProps } from "@/types/item";
+import { User, Lock, EyeOff, Eye, Copy } from 'lucide-react';
+import { useState } from 'react';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { viewSelectedItemProps } from '@/types/item';
 
-export default function ViewSelectedItem({
-  item,
-  onCopy,
-}: viewSelectedItemProps) {
+export default function ViewSelectedItem({ item, onCopy }: viewSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const fields = [
     {
-      label: "Username",
+      label: 'Username',
       value: item.username,
       icon: User,
-      type: "text" as const,
+      type: 'text' as const,
     },
     {
-      label: "Password",
+      label: 'Password',
       value: item.password,
       icon: Lock,
-      type: "password" as const,
+      type: 'password' as const,
     },
   ];
 
@@ -42,18 +39,14 @@ export default function ViewSelectedItem({
             <div className="flex-1 relative">
               <Input
                 readOnly
-                type={
-                  field.type === "password" && !showPassword
-                    ? "password"
-                    : "text"
-                }
+                type={field.type === 'password' && !showPassword ? 'password' : 'text'}
                 value={field.value}
                 id={field.label.toLowerCase()}
                 name={field.label.toLowerCase()}
                 className="pr-10 font-mono bg-muted/40"
               />
 
-              {field.type === "password" && (
+              {field.type === 'password' && (
                 <Button
                   type="button"
                   variant="ghost"
@@ -61,11 +54,7 @@ export default function ViewSelectedItem({
                   className="cursor-pointer absolute right-0 top-0 h-full px-3"
                   onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? (
-                    <EyeOff className="w-4 h-4" />
-                  ) : (
-                    <Eye className="w-4 h-4" />
-                  )}
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </Button>
               )}
             </div>

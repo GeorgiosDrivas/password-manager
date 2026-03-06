@@ -1,21 +1,14 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { signIn } from "next-auth/react";
-import { loginSchema, LoginSchemaType } from "../schemas/loginSchema";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Shield,
-  Eye,
-  EyeOff,
-  ArrowRight,
-  AlertCircle,
-  Loader2,
-} from "lucide-react";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import { loginSchema, LoginSchemaType } from '../schemas/loginSchema';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Shield, Eye, EyeOff, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,33 +23,32 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
 
-  const handleLogin =
-    (setLoading: (value: boolean) => void) => async (data: LoginSchemaType) => {
-      try {
-        setLoading(true);
-        const res = await signIn("credentials", {
-          ...data,
-          redirect: false,
-          callbackUrl: "/dashboard/items",
-        });
+  const handleLogin = (setLoading: (value: boolean) => void) => async (data: LoginSchemaType) => {
+    try {
+      setLoading(true);
+      const res = await signIn('credentials', {
+        ...data,
+        redirect: false,
+        callbackUrl: '/dashboard/items',
+      });
 
-        if (!res?.ok) {
-          setLoading(false);
-          setError("root", {
-            type: "manual",
-            message: res?.error || "Invalid credentials",
-          });
-          return;
-        }
-
-        router.push("/dashboard");
-      } catch (error) {
-        setError("root", {
-          type: "manual",
-          message: "An unexpected error occurred",
+      if (!res?.ok) {
+        setLoading(false);
+        setError('root', {
+          type: 'manual',
+          message: res?.error || 'Invalid credentials',
         });
+        return;
       }
-    };
+
+      router.push('/dashboard');
+    } catch (error) {
+      setError('root', {
+        type: 'manual',
+        message: 'An unexpected error occurred',
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4">
@@ -76,7 +68,7 @@ export default function Login() {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+              transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
               className="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shadow-lg shadow-emerald-500/25 relative"
             >
               <Shield className="w-10 h-10 text-white" />
@@ -100,7 +92,7 @@ export default function Login() {
               {errors.root && (
                 <motion.div
                   initial={{ opacity: 0, height: 0, marginBottom: 0 }}
-                  animate={{ opacity: 1, height: "auto", marginBottom: 16 }}
+                  animate={{ opacity: 1, height: 'auto', marginBottom: 16 }}
                   exit={{ opacity: 0, height: 0, marginBottom: 0 }}
                   className="p-4 rounded-xl bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 flex items-start gap-3"
                 >
@@ -112,17 +104,14 @@ export default function Login() {
               )}
             </AnimatePresence>
 
-            <form
-              onSubmit={handleSubmit(handleLogin(() => {}))}
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit(handleLogin(() => {}))} className="space-y-5">
               <div className="space-y-1.5">
                 <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
                   Username
                 </label>
                 <div className="relative group">
                   <input
-                    {...register("username")}
+                    {...register('username')}
                     className="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl outline-none transition-all duration-200 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 focus:shadow-lg focus:shadow-emerald-500/10 placeholder:text-slate-400 text-slate-800 dark:text-slate-200 font-medium"
                     placeholder="Enter your username"
                   />
@@ -150,8 +139,8 @@ export default function Login() {
                 </div>
                 <div className="relative group">
                   <input
-                    {...register("password")}
-                    type={showPassword ? "text" : "password"}
+                    {...register('password')}
+                    type={showPassword ? 'text' : 'password'}
                     className="w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-slate-800/50 border-2 border-slate-200 dark:border-slate-700 rounded-xl outline-none transition-all duration-200 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 focus:shadow-lg focus:shadow-emerald-500/10 placeholder:text-slate-400 text-slate-800 dark:text-slate-200 font-medium"
                     placeholder="Enter your password"
                   />
@@ -165,11 +154,7 @@ export default function Login() {
                       animate={{ rotate: showPassword ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      {showPassword ? (
-                        <EyeOff className="w-5 h-5" />
-                      ) : (
-                        <Eye className="w-5 h-5" />
-                      )}
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </motion.div>
                   </button>
                   <AnimatePresence>
@@ -215,7 +200,7 @@ export default function Login() {
 
           <div className="px-8 py-6 bg-slate-50/50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800">
             <p className="text-center text-sm text-slate-600 dark:text-slate-400">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?{' '}
               <Link
                 href="/signup"
                 className="text-emerald-600 dark:text-emerald-400 font-bold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors inline-flex items-center gap-1 group"

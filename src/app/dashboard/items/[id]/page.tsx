@@ -1,20 +1,16 @@
-import { redirect } from "next/navigation";
-import { auth } from "@core/auth";
-import SelectedItem from "@/components/selectedItem";
-import { prisma } from "@/lib/prisma";
-import DashboardComponent from "@/components/dashboard";
+import { redirect } from 'next/navigation';
+import { auth } from '@core/auth';
+import SelectedItem from '@/components/selectedItem';
+import { prisma } from '@/lib/prisma';
+import DashboardComponent from '@/components/dashboard';
 
-export default async function ItemPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function ItemPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
   const session = await auth();
 
   if (!session) {
-    redirect("/");
+    redirect('/');
   }
 
   const item = await prisma.item.findUnique({
@@ -22,7 +18,7 @@ export default async function ItemPage({
   });
 
   if (!item) {
-    redirect("/dashboard");
+    redirect('/dashboard');
   }
 
   return (

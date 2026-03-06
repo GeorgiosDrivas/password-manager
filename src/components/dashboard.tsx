@@ -1,35 +1,20 @@
-import Link from "next/link";
-import { redirect } from "next/navigation";
-import { ReactNode } from "react";
-import { auth } from "@core/auth";
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { ReactNode } from 'react';
+import { auth } from '@core/auth';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
-import {
-  Plus,
-  Search as SearchIcon,
-  Shield,
-  LogOut,
-  ChevronRight,
-} from "lucide-react";
-import { prisma } from "@/lib/prisma";
+import { Plus, Search as SearchIcon, Shield, LogOut, ChevronRight } from 'lucide-react';
+import { prisma } from '@/lib/prisma';
 
-export default async function DashboardComponent({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default async function DashboardComponent({ children }: { children: ReactNode }) {
   const session = await auth();
-  if (!session) redirect("/");
+  if (!session) redirect('/');
 
   const userId = Number(session.user.id);
 
@@ -39,23 +24,23 @@ export default async function DashboardComponent({
 
   const userInitials =
     session.user?.name
-      ?.split(" ")
+      ?.split(' ')
       .map((n) => n[0])
-      .join("")
-      .toUpperCase() || "U";
+      .join('')
+      .toUpperCase() || 'U';
 
   const navItems = [
     ...itemsList.map((item: any) => ({
       href: `/dashboard/items/${item.id}` as const,
       icon: Shield,
       label: item.title,
-      description: "Saved password",
+      description: 'Saved password',
     })),
     {
-      href: "/dashboard/new-item" as const,
+      href: '/dashboard/new-item' as const,
       icon: Plus,
-      label: "Add New",
-      description: "Create password",
+      label: 'Add New',
+      description: 'Create password',
     },
   ] as const;
 
@@ -70,12 +55,8 @@ export default async function DashboardComponent({
                   <Shield className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h1 className="font-bold text-lg text-slate-900 dark:text-white">
-                    PassVault
-                  </h1>
-                  <p className="text-xs text-emerald-600 dark:text-emerald-400">
-                    Secure Storage
-                  </p>
+                  <h1 className="font-bold text-lg text-slate-900 dark:text-white">PassVault</h1>
+                  <p className="text-xs text-emerald-600 dark:text-emerald-400">Secure Storage</p>
                 </div>
               </div>
             </Link>
@@ -125,9 +106,7 @@ export default async function DashboardComponent({
                           <item.icon className="w-4 h-4" />
                         </div>
 
-                        <span className="text-sm font-medium">
-                          {item.label}
-                        </span>
+                        <span className="text-sm font-medium">{item.label}</span>
 
                         <ChevronRight className="w-4 h-4 ml-auto text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </Button>
@@ -160,11 +139,9 @@ export default async function DashboardComponent({
         <main className="flex-1 flex flex-col min-w-0">
           <header className="h-16 border-b border-emerald-100 dark:border-emerald-900/30 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl sticky top-0 z-30 flex items-center justify-between px-6">
             <div className="flex items-center gap-4">
-              <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
-                Passwords
-              </h2>
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Passwords</h2>
               <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300 border-0">
-                {itemsList.length} {itemsList.length === 1 ? "item" : "items"}
+                {itemsList.length} {itemsList.length === 1 ? 'item' : 'items'}
               </Badge>
             </div>
 
@@ -172,10 +149,7 @@ export default async function DashboardComponent({
               size="sm"
               className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 transition-all"
             >
-              <Link
-                href="/dashboard/new-item"
-                className="gap-2 flex items-center"
-              >
+              <Link href="/dashboard/new-item" className="gap-2 flex items-center">
                 <Plus className="w-4 h-4" />
                 Add new
               </Link>
