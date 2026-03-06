@@ -59,7 +59,7 @@ export default function SearchComponent({ navItems }: Props) {
                   <Link href={item.href as Route}>
                     <Button
                       variant="ghost"
-                      className="w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
+                      className="cursor-pointer w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
                     >
                       <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
                         {Icon && <Icon className="w-4 h-4" />}
@@ -80,7 +80,7 @@ export default function SearchComponent({ navItems }: Props) {
               <Link href="/dashboard/new-item">
                 <Button
                   variant="ghost"
-                  className="w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
+                  className="cursor-pointer w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
                 >
                   <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
                     <Plus className="w-4 h-4" />
