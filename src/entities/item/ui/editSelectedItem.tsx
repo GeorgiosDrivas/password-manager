@@ -2,9 +2,9 @@ import { noIdItemSchema, noIdItemSchemaType } from '@/entities/item/model/ItemSc
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Label } from '@/shared/ui/primitives/label';
+import { Input } from '@/shared/ui/primitives/input';
+import { Button } from '@/shared/ui/primitives/button';
 import { Eye, EyeOff, Loader2, Save } from 'lucide-react';
 import { EditSelectedItemProps } from '@/shared/types/item';
 

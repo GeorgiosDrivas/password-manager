@@ -3,9 +3,9 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { Search as SearchIcon, ChevronRight, Shield, Plus, LucideIcon } from 'lucide-react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Input } from '@/shared/ui/primitives/input';
+import { Button } from '@/shared/ui/primitives/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/primitives/tooltip';
 import { NavItem } from '@/shared/types/item';
 import { Route } from 'next';
 

@@ -1,5 +1,5 @@
-import SettingsPage from '@/components/Settings';
-import DashboardComponent from '@/components/dashboard';
+import SettingsPage from '@/widgets/Settings';
+import DashboardComponent from '@/widgets/dashboard';
 
 export default function Settings() {
   return (

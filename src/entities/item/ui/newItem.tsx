@@ -6,9 +6,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+import { Label } from '@/shared/ui/primitives/label';
+import { Input } from '@/shared/ui/primitives/input';
+import { Button } from '@/shared/ui/primitives/button';
 
 import { Eye, EyeOff, Loader2, Plus } from 'lucide-react';
 

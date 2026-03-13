@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 import { auth } from '@core/auth';
 import SelectedItem from '@/entities/item/ui/selectedItem';
 import { prisma } from '@/shared/lib/prisma';
-import DashboardComponent from '@/components/dashboard';
+import DashboardComponent from '@/widgets/dashboard';
 
 export default async function ItemPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

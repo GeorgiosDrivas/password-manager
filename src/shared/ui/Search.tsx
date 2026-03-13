@@ -1,6 +1,6 @@
 'use client';
 
-import { useAppContext } from '../shared/providers/appContent';
+import { useAppContext } from '../providers/appContent';
 
 export default function Search() {
   const { setSearchQuery } = useAppContext();

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import NewItem from '@/entities/item/ui/newItem';
 import { auth } from '@core/auth';
-import DashboardComponent from '@/components/dashboard';
+import DashboardComponent from '@/widgets/dashboard';
 
 export default async function NewItemPage() {
   const session = await auth();

@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@core/auth';
-import DashboardComponent from '@/components/dashboard';
+import DashboardComponent from '@/widgets/dashboard';
 import { prisma } from '@/shared/lib/prisma';
-import PasswordTable from '@/components/passwordTable';
+import PasswordTable from '@/widgets/passwordTable';
 
 export default async function Items() {
   const session = await auth();

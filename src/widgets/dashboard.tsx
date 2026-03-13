@@ -5,15 +5,15 @@ import { ReactNode } from 'react';
 import { auth } from '@core/auth';
 import { prisma } from '@/shared/lib/prisma';
 
-import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import { TooltipProvider } from '@/components/ui/tooltip';
+import { Button } from '@/shared/ui/primitives/button';
+import { Avatar, AvatarFallback } from '@/shared/ui/primitives/avatar';
+import { Badge } from '@/shared/ui/primitives/badge';
+import { TooltipProvider } from '@/shared/ui/primitives/tooltip';
 
 import { Plus, Shield, LogOut } from 'lucide-react';
 import { NavItem } from '@/shared/types/item';
 
-import SearchComponent from '@/components/searchComponent';
+import SearchComponent from '@/shared/ui/searchComponent';
 
 export default async function DashboardComponent({ children }: { children: ReactNode }) {
   const session = await auth();

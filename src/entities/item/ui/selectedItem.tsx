@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { getUrlFavicon } from '@/shared/lib/utils/getFaviconUrl';
 
-import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
+import { Button } from '@/shared/ui/primitives/button';
+import { Separator } from '@/shared/ui/primitives/separator';
 
 import {
   AlertDialog,
@@ -18,7 +18,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+} from '@/shared/ui/primitives/alert-dialog';
 
 import { ExternalLink, Trash2, Globe, Edit3 } from 'lucide-react';
 import EditSelectedItem from '@/entities/item/ui/editSelectedItem';

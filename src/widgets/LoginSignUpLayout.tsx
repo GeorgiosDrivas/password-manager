@@ -1,7 +1,7 @@
 'use client';
 import { ReactNode, useState } from 'react';
 import LandingImage from './LandingImage';
-import Loading from './Loading';
+import Loading from '../shared/ui/Loading';
 
 export default function LoginSignUpLayout({
   children,
