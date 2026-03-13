@@ -1,4 +1,4 @@
-import { ItemSchemaType } from '@/schemas/ItemSchema';
+import { ItemSchemaType } from '@/entities/item/model/ItemSchema';
 
 export interface SelectedItemClientProps {
   item: ItemSchemaType;

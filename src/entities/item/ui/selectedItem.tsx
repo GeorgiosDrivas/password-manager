@@ -21,8 +21,8 @@ import {
 } from '@/components/ui/alert-dialog';
 
 import { ExternalLink, Trash2, Globe, Edit3 } from 'lucide-react';
-import EditSelectedItem from '@/components/editSelectedItem';
-import ViewSelectedItem from '@/components/viewSelectedItem';
+import EditSelectedItem from '@/entities/item/ui/editSelectedItem';
+import ViewSelectedItem from '@/entities/item/ui/viewSelectedItem';
 import { SelectedItemClientProps } from '@/shared/types/item';
 
 export default function SelectedItem({ item }: SelectedItemClientProps) {

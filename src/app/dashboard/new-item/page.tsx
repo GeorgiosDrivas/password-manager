@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import NewItem from '@/components/newItem';
+import NewItem from '@/entities/item/ui/newItem';
 import { auth } from '@core/auth';
 import DashboardComponent from '@/components/dashboard';
 

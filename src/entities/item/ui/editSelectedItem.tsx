@@ -1,4 +1,4 @@
-import { noIdItemSchema, noIdItemSchemaType } from '@/schemas/ItemSchema';
+import { noIdItemSchema, noIdItemSchemaType } from '@/entities/item/model/ItemSchema';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';

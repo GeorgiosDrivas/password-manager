@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@core/auth';
-import SelectedItem from '@/components/selectedItem';
+import SelectedItem from '@/entities/item/ui/selectedItem';
 import { prisma } from '@/shared/lib/prisma';
 import DashboardComponent from '@/components/dashboard';
 
