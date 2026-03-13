@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ReactNode } from 'react';
-import { AppProvider } from '../context/appContent';
+import { AppProvider } from '../shared/providers/appContent';
 
 export const metadata: Metadata = {
   title: 'Password Manager',

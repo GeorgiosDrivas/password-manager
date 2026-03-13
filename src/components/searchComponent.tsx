@@ -6,7 +6,7 @@ import { Search as SearchIcon, ChevronRight, Shield, Plus, LucideIcon } from 'lu
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { NavItem } from '@/types/item';
+import { NavItem } from '@/shared/types/item';
 import { Route } from 'next';
 
 const iconMap: Record<string, LucideIcon> = {

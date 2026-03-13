@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
 import { auth } from '@core/auth';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/shared/lib/prisma';
 
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 import { Plus, Shield, LogOut } from 'lucide-react';
-import { NavItem } from '@/types/item';
+import { NavItem } from '@/shared/types/item';
 
 import SearchComponent from '@/components/searchComponent';
 

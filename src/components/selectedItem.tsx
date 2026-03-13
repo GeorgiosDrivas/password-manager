@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { getUrlFavicon } from '@/utils/getFaviconUrl';
+import { getUrlFavicon } from '@/shared/lib/utils/getFaviconUrl';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -23,7 +23,7 @@ import {
 import { ExternalLink, Trash2, Globe, Edit3 } from 'lucide-react';
 import EditSelectedItem from '@/components/editSelectedItem';
 import ViewSelectedItem from '@/components/viewSelectedItem';
-import { SelectedItemClientProps } from '@/types/item';
+import { SelectedItemClientProps } from '@/shared/types/item';
 
 export default function SelectedItem({ item }: SelectedItemClientProps) {
   const router = useRouter();

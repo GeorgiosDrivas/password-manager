@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { auth } from '@core/auth';
 import DashboardComponent from '@/components/dashboard';
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/shared/lib/prisma';
 import PasswordTable from '@/components/passwordTable';
 
 export default async function Items() {

@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Eye, EyeOff, Loader2, Save } from 'lucide-react';
-import { EditSelectedItemProps } from '@/types/item';
+import { EditSelectedItemProps } from '@/shared/types/item';
 
 export default function EditSelectedItem({ item, onCancel, onSuccess }: EditSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);

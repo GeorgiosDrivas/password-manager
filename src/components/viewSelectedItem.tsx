@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { viewSelectedItemProps } from '@/types/item';
+import { viewSelectedItemProps } from '@/shared/types/item';
 
 export default function ViewSelectedItem({ item, onCopy }: viewSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);
