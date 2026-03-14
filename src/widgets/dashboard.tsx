@@ -44,12 +44,12 @@ export default async function DashboardComponent({ children }: { children: React
 
   return (
     <TooltipProvider delayDuration={0}>
-      <div className="min-h-screen flex bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen flex bg-linear-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
         <aside className="w-72 border-r border-emerald-100 dark:border-emerald-900/30 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl flex flex-col h-screen sticky top-0">
           <div className="p-6 border-b border-emerald-100 dark:border-emerald-900/30">
             <Link href="/dashboard">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25">
+                <div className="w-10 h-10 rounded-xl bg-linear-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25">
                   <Shield className="w-5 h-5 text-white" />
                 </div>
 
@@ -106,7 +106,7 @@ export default async function DashboardComponent({ children }: { children: React
 
             <Button
               size="sm"
-              className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg"
+              className="bg-linear-to-r from-emerald-500 to-teal-600 text-white shadow-lg"
             >
               <Link href="/dashboard/new-item" className="flex items-center gap-2">
                 <Plus className="w-4 h-4" />
