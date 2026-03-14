@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { loginSchema, LoginSchemaType } from '../schemas/loginSchema';
+import { loginSchema, LoginSchemaType } from '../shared/auth/schemas/loginSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';

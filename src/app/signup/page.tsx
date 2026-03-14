@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
-import { SignupSchemaType, signupSchema } from '@/schemas/signupSchema';
+import { SignupSchemaType, signupSchema } from '@/shared/auth/schemas/signupSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
