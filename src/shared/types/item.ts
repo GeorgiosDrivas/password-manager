@@ -21,3 +21,11 @@ export type NavItem = {
   label: string;
   description: string;
 };
+
+export interface Item {
+  id: number;
+  title: string;
+  username: string;
+  password: string;
+  url: string;
+}
