@@ -11,7 +11,7 @@ import { Badge } from '@/shared/ui/primitives/badge';
 import { TooltipProvider } from '@/shared/ui/primitives/tooltip';
 
 import { Plus, Shield, LogOut } from 'lucide-react';
-import { NavItem } from '@/shared/types/item';
+import { NavItem } from '@/shared/types/item.types';
 
 import SearchComponent from '@/shared/ui/searchComponent';
 

@@ -6,16 +6,12 @@ import { Search as SearchIcon, ChevronRight, Shield, Plus, LucideIcon } from 'lu
 import { Input } from '@/shared/ui/primitives/input';
 import { Button } from '@/shared/ui/primitives/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/primitives/tooltip';
-import { NavItem } from '@/shared/types/item';
 import { Route } from 'next';
+import { Props } from '@/shared/types/search.types';
 
 const iconMap: Record<string, LucideIcon> = {
   Shield,
   Plus,
-};
-
-type Props = {
-  navItems: NavItem[];
 };
 
 export default function SearchComponent({ navItems }: Props) {
@@ -61,7 +57,7 @@ export default function SearchComponent({ navItems }: Props) {
                       variant="ghost"
                       className="cursor-pointer w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
                     >
-                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-linear-to-br from-emerald-500 to-teal-600 text-white shadow-md">
                         {Icon && <Icon className="w-4 h-4" />}
                       </div>
                       <span className="text-sm font-medium">{item.label}</span>
@@ -82,7 +78,7 @@ export default function SearchComponent({ navItems }: Props) {
                   variant="ghost"
                   className="cursor-pointer w-full justify-start gap-3 h-11 px-3 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all group rounded-xl"
                 >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-md">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-linear-to-br from-emerald-500 to-teal-600 text-white shadow-md">
                     <Plus className="w-4 h-4" />
                   </div>
                   <span className="text-sm font-medium">Add New</span>

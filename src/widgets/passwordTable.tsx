@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Eye, EyeOff, Copy } from 'lucide-react';
 import { Button } from '@/shared/ui/primitives/button';
-import { Item } from '@/shared/types/item';
+import { Item } from '@/shared/types/item.types';
 
 export default function PasswordTable({ items }: { items: Item[] }) {
   const [visiblePasswords, setVisiblePasswords] = useState<number[]>([]);

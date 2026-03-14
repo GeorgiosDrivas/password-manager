@@ -6,7 +6,7 @@ import { Label } from '@/shared/ui/primitives/label';
 import { Input } from '@/shared/ui/primitives/input';
 import { Button } from '@/shared/ui/primitives/button';
 import { Eye, EyeOff, Loader2, Save } from 'lucide-react';
-import { EditSelectedItemProps } from '@/shared/types/item';
+import { EditSelectedItemProps } from '@/shared/types/item.types';
 
 export default function EditSelectedItem({ item, onCancel, onSuccess }: EditSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Label } from '@/shared/ui/primitives/label';
 import { Input } from '@/shared/ui/primitives/input';
 import { Button } from '@/shared/ui/primitives/button';
-import { viewSelectedItemProps } from '@/shared/types/item';
+import { viewSelectedItemProps } from '@/shared/types/item.types';
 
 export default function ViewSelectedItem({ item, onCopy }: viewSelectedItemProps) {
   const [showPassword, setShowPassword] = useState(false);
