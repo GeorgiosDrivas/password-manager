@@ -1,10 +1,6 @@
 'use client';
 import { createContext, ReactNode, useContext, useState } from 'react';
-
-type AppContextType = {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-};
+import { AppContextType } from '@/shared/types/provider.types';
 
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
