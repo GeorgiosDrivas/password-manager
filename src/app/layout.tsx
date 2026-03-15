@@ -2,28 +2,28 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ReactNode } from 'react';
 import { AppProvider } from '../shared/providers/appContent';
+import { Rubik, Fira_Sans } from 'next/font/google';
+
+const rubik = Rubik({
+  subsets: ['latin'],
+  variable: '--font-rubik',
+});
+
+const firaSans = Fira_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-fira',
+});
 
 export const metadata: Metadata = {
   title: 'Password Manager',
   description: 'Create and manage your passwords securely',
 };
 
-export default async function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&display=swap"
-          rel="stylesheet"
-        ></link>
-      </head>
-      <body>
+      <body className={`${rubik.variable} ${firaSans.variable}`}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>
