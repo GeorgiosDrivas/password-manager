@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
-    "start": "next start",
+    "build": "prisma generate && next build",
+    "start": "prisma migrate deploy && next start",
     "prisma": "npx prisma migrate dev --name init",
     "postinstall": "prisma generate",
     "lint": "eslint . --ext .js,.ts,.tsx",
