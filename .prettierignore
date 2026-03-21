@@ -5,3 +5,4 @@ src/generated
 dist
 primsa/migrations
 prisma/seed.ts
+src/shared/lib/seed.ts
