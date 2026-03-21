@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Eye, EyeOff, ArrowRight, AlertCircle, Loader2 } from 'lucide-react';
+import { Button } from '@/shared/ui/primitives/button';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,9 +24,8 @@ export default function Login() {
     resolver: zodResolver(loginSchema),
   });
 
-  const handleLogin = (setLoading: (value: boolean) => void) => async (data: LoginSchemaType) => {
+  const handleLogin = async (data: LoginSchemaType) => {
     try {
-      setLoading(true);
       const res = await signIn('credentials', {
         ...data,
         redirect: false,
@@ -33,7 +33,32 @@ export default function Login() {
       });
 
       if (!res?.ok) {
-        setLoading(false);
+        setError('root', {
+          type: 'manual',
+          message: res?.error || 'Invalid credentials',
+        });
+        return;
+      }
+
+      router.push('/dashboard');
+    } catch {
+      setError('root', {
+        type: 'manual',
+        message: 'An unexpected error occurred',
+      });
+    }
+  };
+
+  const initializeDemo = async () => {
+    try {
+      const res = await signIn('credentials', {
+        username: 'demo',
+        password: 'demoPass1',
+        redirect: false,
+        callbackUrl: '/dashboard/items',
+      });
+
+      if (!res?.ok) {
         setError('root', {
           type: 'manual',
           message: res?.error || 'Invalid credentials',
@@ -104,7 +129,7 @@ export default function Login() {
               )}
             </AnimatePresence>
 
-            <form onSubmit={handleSubmit(handleLogin(() => {}))} className="space-y-5">
+            <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
               <div className="space-y-1.5">
                 <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">
                   Username
@@ -208,6 +233,16 @@ export default function Login() {
                 Create account
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
+            </p>
+            <p className="text-center text-sm text-slate-600 dark:text-slate-400">
+              Not interested in creating an account?
+              <Button
+                className="p-0 m-0 bg-transparent cursor-pointer hover:bg-transparent text-emerald-600 dark:text-emerald-400 font-bold hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors inline-flex items-center gap-1 group"
+                onClick={initializeDemo}
+              >
+                View demo
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
             </p>
           </div>
         </div>
