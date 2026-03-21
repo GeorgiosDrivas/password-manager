@@ -10,8 +10,8 @@ datasource db {
 model User {
   id       Int    @id @default(autoincrement())
   name     String
-  username String
-  password String @unique
+  username String @unique
+  password String
   items    Item[] @relation("UserItems")
 }
 
