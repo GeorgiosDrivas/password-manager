@@ -19,14 +19,12 @@ interface MobileNavProps {
 export function MobileNav({ userInitials, userName, userEmail, navItems }: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
-  // Close on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, []);
 
-  // Lock body scroll while open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => {
@@ -36,7 +34,6 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
 
   return (
     <>
-      {/* Hamburger trigger — sits inline in the header */}
       <button
         onClick={() => setOpen(true)}
         className="lg:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/30 transition-colors"
@@ -45,16 +42,9 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
       >
         <Menu className="w-5 h-5" />
       </button>
-
-      {/*
-       * Backdrop + drawer are portalled directly to document.body.
-       * This escapes the header's z-30 stacking context so the drawer
-       * reliably renders above all page content.
-       */}
       {typeof document !== 'undefined' &&
         createPortal(
           <>
-            {/* Backdrop */}
             <div
               aria-hidden="true"
               onClick={() => setOpen(false)}
@@ -65,7 +55,6 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
             `}
             />
 
-            {/* Drawer */}
             <aside
               aria-label="Mobile navigation"
               className={`
@@ -77,7 +66,6 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
               ${open ? 'translate-x-0' : '-translate-x-full'}
             `}
             >
-              {/* Header: logo + close button */}
               <div className="p-6 border-b border-emerald-100 dark:border-emerald-900/30 shrink-0">
                 <div className="flex items-center justify-between mb-6">
                   <Link href="/dashboard" onClick={() => setOpen(false)}>
@@ -105,7 +93,6 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
                   </button>
                 </div>
 
-                {/* User info */}
                 <div className="flex items-center gap-3 p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/40">
                   <Avatar className="h-10 w-10 border-2 border-emerald-500/30 shrink-0">
                     <AvatarFallback className="bg-emerald-500 text-white font-semibold">
@@ -123,12 +110,10 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
                 </div>
               </div>
 
-              {/* Scrollable nav list */}
               <div className="flex-1 overflow-y-auto" onClick={() => setOpen(false)}>
                 <SearchComponent navItems={navItems} />
               </div>
 
-              {/* Footer actions */}
               <div className="p-3 border-t border-emerald-100 dark:border-emerald-900/30 space-y-1 shrink-0">
                 <Button
                   size="sm"
