@@ -6,7 +6,7 @@ const extractBaseDomain = (hostname: string) => {
   return hostname;
 };
 
-export const getUrlFavicon = (url: string) => {
+export const getFaviconUrl = (url: string) => {
   const hostname = new URL(url).hostname;
   const baseDomain = extractBaseDomain(hostname);
   return `https://www.google.com/s2/favicons?sz=64&domain=${baseDomain}`;

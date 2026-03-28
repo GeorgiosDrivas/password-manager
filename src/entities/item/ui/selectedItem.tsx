@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { getUrlFavicon } from '@/shared/lib/utils/getFaviconUrl';
+import { getFaviconUrl } from '@/shared/lib/utils/getFaviconUrl';
 
 import { Button } from '@/shared/ui/primitives/button';
 import { Separator } from '@/shared/ui/primitives/separator';
@@ -57,7 +57,7 @@ export default function SelectedItem({ item }: SelectedItemClientProps) {
       <div className="flex items-start gap-6">
         <div className="relative w-20 h-20 rounded-2xl overflow-hidden bg-muted border shadow-sm">
           <Image
-            src={getUrlFavicon(item.url)}
+            src={getFaviconUrl(item.url)}
             alt={`${item.title} favicon`}
             fill
             className="object-cover"
