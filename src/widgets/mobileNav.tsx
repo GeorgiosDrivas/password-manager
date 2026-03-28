@@ -49,7 +49,7 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
               aria-hidden="true"
               onClick={() => setOpen(false)}
               className={`
-              fixed inset-0 z-[200] bg-slate-900/50 backdrop-blur-sm
+              fixed inset-0 z-200 bg-slate-900/50 backdrop-blur-sm
               transition-opacity duration-300
               ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
             `}
@@ -58,7 +58,7 @@ export function MobileNav({ userInitials, userName, userEmail, navItems }: Mobil
             <aside
               aria-label="Mobile navigation"
               className={`
-              fixed inset-y-0 left-0 z-[210] w-72
+              fixed inset-y-0 left-0 z-210 w-72
               flex flex-col
               border-r border-emerald-100 dark:border-emerald-900/30
               bg-white dark:bg-slate-900
