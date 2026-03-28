@@ -7,6 +7,7 @@
     "dev": "prisma migrate dev && prisma db seed && next dev",
     "build": "prisma generate && next build",
     "start": "next start",
+    "test": "vitest",
     "seed": "prisma db seed",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
