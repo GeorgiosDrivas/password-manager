@@ -1,9 +1,7 @@
 # 🔐 Password Manager
 
 A secure, modern password manager built with **Next.js**, **NextAuth**, **Prisma**, and **PostgreSQL**.  
-Designed with security, performance, and clean UI in mind.
-
-> ⚠️ This project is currently a work in progress.
+Designed with security, simplicity, performance, and clean UI in mind.
 
 ---
 
@@ -24,6 +22,7 @@ Designed with security, performance, and clean UI in mind.
 - **Tailwind CSS** – Utility-first styling
 - **Zod** - TypeScript-first schema validation
 - **Husky** - Git Hooks management
+- **Vitest** - Unit testing
 
 ---
 
@@ -35,15 +34,18 @@ Designed with security, performance, and clean UI in mind.
 - 🛡 Isolated user data (per-user vault)
 - ⚡ Fast and responsive UI
 - 🎨 Modern design with Tailwind CSS
+- 📱 Responsive design
 
 ---
 
 ## 🏗 Architecture Overview
 
+- **Architecture:** Feature-Sliced Design
 - **Frontend:** Next.js App Router
 - **Backend:** Next.js API routes
 - **Authentication:** Session-based auth via NextAuth
 - **Database Layer:** Prisma ORM
 - **Database:** PostgreSQL
+- **Testing:** Vitest
 
 ---
