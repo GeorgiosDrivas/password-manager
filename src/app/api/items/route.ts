@@ -1,21 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
+import { auth } from '@core/auth';
 
-export async function GET(req: NextRequest) {
-  const userIdParam = req.nextUrl.searchParams.get('userId');
+export async function GET() {
+  const session = await auth();
 
-  if (!userIdParam) {
-    return new NextResponse('Missing userId', { status: 400 });
-  }
-
-  const userId = parseInt(userIdParam);
-  if (isNaN(userId)) {
-    return new NextResponse('Invalid userId', { status: 400 });
+  if (!session?.user?.id) {
+    return new NextResponse('Unauthorized', { status: 401 });
   }
 
   try {
     const items = await prisma.item.findMany({
-      where: { userId },
+      where: { userId: Number(session.user.id) },
+      orderBy: { id: 'desc' },
     });
 
     return NextResponse.json(items);

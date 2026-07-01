@@ -1,90 +1,69 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
+import { auth } from '@core/auth';
+import { noIdItemSchema } from '@/entities/item/model/ItemSchema';
 
-export async function POST(req: Request) {
-  let data;
-  try {
-    data = await req.json();
-  } catch {
-    return new NextResponse('Invalid JSON', { status: 400 });
+type RouteContext = { params: Promise<{ id: string }> };
+
+export async function PUT(req: Request, { params }: RouteContext) {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return new NextResponse('Unauthorized', { status: 401 });
   }
 
-  const { title, username, password, url, userId } = data;
-
-  if (!title || !username || !password || !url) {
-    return new NextResponse('Missing fields', { status: 400 });
-  }
-
-  const parsedUserId = parseInt(userId);
-  if (isNaN(parsedUserId)) {
-    return new NextResponse('Invalid userId', { status: 400 });
-  }
-
-  await prisma.item.create({
-    data: {
-      title,
-      username,
-      password,
-      url,
-      userId: parsedUserId,
-    },
-  });
-
-  return NextResponse.json({ message: 'New item created' });
-}
-
-export async function PUT(req: Request) {
-  let data;
-  try {
-    data = await req.json();
-  } catch {
-    return new NextResponse('Invalid JSON', { status: 400 });
-  }
-
-  const { title, username, password, url, itemId } = data;
-
-  const parsedItemId = parseInt(itemId);
-  if (isNaN(parsedItemId)) {
+  const { id } = await params;
+  const itemId = parseInt(id, 10);
+  if (isNaN(itemId)) {
     return new NextResponse('Invalid item id', { status: 400 });
   }
 
-  await prisma.item.update({
-    where: { id: parsedItemId },
-    data: {
-      title,
-      username,
-      password,
-      url,
-    },
+  let data;
+  try {
+    data = await req.json();
+  } catch {
+    return new NextResponse('Invalid JSON', { status: 400 });
+  }
+
+  const parsed = noIdItemSchema.safeParse(data);
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
+  }
+
+  const { title, username, password, url } = parsed.data;
+
+  const result = await prisma.item.updateMany({
+    where: { id: itemId, userId: Number(session.user.id) },
+    data: { title, username: username ?? '', password, url },
   });
+
+  if (result.count === 0) {
+    return new NextResponse('Item not found', { status: 404 });
+  }
 
   return NextResponse.json({ message: `${title} edited` });
 }
 
-export async function DELETE(req: Request) {
-  let data;
-  try {
-    data = await req.json();
-  } catch {
-    return new NextResponse('Invalid JSON', { status: 400 });
+export async function DELETE(_req: Request, { params }: RouteContext) {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return new NextResponse('Unauthorized', { status: 401 });
   }
 
-  const { itemId } = data;
-
-  if (!itemId) {
-    return new NextResponse('Missing item ID', { status: 400 });
+  const { id } = await params;
+  const itemId = parseInt(id, 10);
+  if (isNaN(itemId)) {
+    return new NextResponse('Invalid item id', { status: 400 });
   }
 
-  const parsedItemId = parseInt(itemId);
-  if (isNaN(parsedItemId)) {
-    return new NextResponse('Invalid item ID', { status: 400 });
-  }
-
-  await prisma.item.delete({
-    where: {
-      id: itemId,
-    },
+  const result = await prisma.item.deleteMany({
+    where: { id: itemId, userId: Number(session.user.id) },
   });
+
+  if (result.count === 0) {
+    return new NextResponse('Item not found', { status: 404 });
+  }
 
   return NextResponse.json({ message: 'Item deleted' });
 }

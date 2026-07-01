@@ -4,11 +4,10 @@
   "packageManager": "pnpm@10.32.1",
   "private": true,
   "scripts": {
-    "dev": "prisma migrate dev && prisma db seed && next dev",
+    "dev": "prisma migrate dev && next dev",
     "build": "prisma generate && next build",
     "start": "next start",
     "test": "vitest",
-    "seed": "prisma db seed",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "postinstall": "prisma generate",

@@ -1,7 +1,15 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
+import { auth } from '@core/auth';
+import { noIdItemSchema } from '@/entities/item/model/ItemSchema';
 
 export async function POST(req: Request) {
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return new NextResponse('Unauthorized', { status: 401 });
+  }
+
   let data;
   try {
     data = await req.json();
@@ -9,24 +17,20 @@ export async function POST(req: Request) {
     return new NextResponse('Invalid JSON', { status: 400 });
   }
 
-  const { title, username, password, url, userId } = data;
-
-  if (!title || !username || !password || !url) {
-    return new NextResponse('Missing fields', { status: 400 });
+  const parsed = noIdItemSchema.safeParse(data);
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
-  const parsedUserId = parseInt(userId);
-  if (isNaN(parsedUserId)) {
-    return new NextResponse('Invalid userId', { status: 400 });
-  }
+  const { title, username, password, url } = parsed.data;
 
   await prisma.item.create({
     data: {
       title,
-      username,
+      username: username ?? '',
       password,
       url,
-      userId: parsedUserId,
+      userId: Number(session.user.id),
     },
   });
 
