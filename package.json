@@ -15,6 +15,7 @@
     "lint:fix": "eslint . --fix",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
+    "vault:encrypt": "tsx scripts/encrypt-existing-passwords.ts",
     "prepare": "husky || true"
   },
   "dependencies": {

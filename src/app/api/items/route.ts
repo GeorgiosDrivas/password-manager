@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
 import { auth } from '@core/auth';
+import { decrypt } from '@/shared/lib/crypto';
 
 export async function GET() {
   const session = await auth();
@@ -15,7 +16,12 @@ export async function GET() {
       orderBy: { id: 'desc' },
     });
 
-    return NextResponse.json(items);
+    const decryptedItems = items.map((item) => ({
+      ...item,
+      password: decrypt(item.password),
+    }));
+
+    return NextResponse.json(decryptedItems);
   } catch (err) {
     console.error('Error fetching items:', err);
     return new NextResponse('Server error', { status: 500 });

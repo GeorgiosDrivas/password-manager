@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
 import { auth } from '@core/auth';
 import { noIdItemSchema } from '@/entities/item/model/ItemSchema';
+import { encrypt } from '@/shared/lib/crypto';
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -34,7 +35,7 @@ export async function PUT(req: Request, { params }: RouteContext) {
 
   const result = await prisma.item.updateMany({
     where: { id: itemId, userId: Number(session.user.id) },
-    data: { title, username: username ?? '', password, url },
+    data: { title, username: username ?? '', password: encrypt(password), url },
   });
 
   if (result.count === 0) {

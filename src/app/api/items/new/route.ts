@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/shared/lib/prisma';
 import { auth } from '@core/auth';
 import { noIdItemSchema } from '@/entities/item/model/ItemSchema';
+import { encrypt } from '@/shared/lib/crypto';
 
 export async function POST(req: Request) {
   const session = await auth();
@@ -28,7 +29,7 @@ export async function POST(req: Request) {
     data: {
       title,
       username: username ?? '',
-      password,
+      password: encrypt(password),
       url,
       userId: Number(session.user.id),
     },
